@@ -1,0 +1,14 @@
+{
+  "title": "San Diego CRE - research hypothesis",
+  "objective": "Screen fictional San Diego commercial properties against a tentative CPP-inspired adaptive-reuse hypothesis. Verify ownership, planning and economics before considering any investment.",
+  "entity_label": "Property",
+  "plural_label": "Properties",
+  "category_label": "Property type",
+  "stage_label": "Diligence stage",
+  "criteria": [
+    "Location fit",
+    "Reuse potential",
+    "Tenant potential",
+    "Evidence confidence"
+  ]
+}
