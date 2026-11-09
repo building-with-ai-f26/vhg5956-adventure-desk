@@ -28,8 +28,8 @@ Optional: Ollama on http://127.0.0.1:11434 with an installed model. No model is 
 
 Open http://127.0.0.1:8780. This serves only the static page and screenshots.
 
-## Publish after approval
-Create a public repository from the class template in `building-with-ai-f26`, named `<netid>-adventure-desk`; confirm the actual netid and owner first. Copy these prepared changes into that repository, commit with the builder's real configured identity, and push. Configure Pages: main branch, /docs. Verify the resulting page and repository URLs, then submit those two URLs in Icerynk. This preparation has not published or submitted anything.
+## Publication and submission
+Repository: https://github.com/building-with-ai-f26/vhg5956-adventure-desk. GitHub Pages serves main /docs. Submit the verified Product Page and repository URLs in Icerynk; publication does not itself submit the assignment.
 
 Do not upload local databases, backups, credentials, private logs or unrelated files. `.gitignore` excludes runtime data. The public page must remain a showcase; do not expose the localhost Python server to the Internet.
 
