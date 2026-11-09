@@ -28,3 +28,15 @@ build/
 out/
 .DS_Store
 *.log
+
+# Local prototype state and personal machine files
+**/*.sqlite3
+**/*.sqlite3-*
+**/*.db
+**/__pycache__/
+**/*.pyc
+**/*.log
+prototype/adventures/
+.env
+.env.*
+!.env.example

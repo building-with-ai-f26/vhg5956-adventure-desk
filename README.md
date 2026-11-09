@@ -1,45 +1,37 @@
-# [Project Name]
+# Adventure Desk
 
-> **One-line pitch:** [Who is this for, and what job does it do for them?]
+Turn an outreach or research list into a clear next-action queue.
 
-- **Builder:** [Your Name] (`@github-handle`)
-- **Pod:** [Pod Name / Number]
-- **Product Page & Living PRD:** [Add your GitHub Pages URL]
-- **App:** runs locally through Week 4; add a cloud URL in Build 5.
+- Builder: Vic (@VHG-NYU). Pod not yet confirmed.
+- Product page and PRD: https://building-with-ai-f26.github.io/vhg5956-adventure-desk/
+- App: runs locally. No hosted app or external messaging is required for Build 1.
+- Source template: https://github.com/building-with-ai-f26/project-template
 
-## Start here: Build 1
+## Run the prototype
+Python 3.12 or later, standard library only. No package installation required for the deterministic workflow.
 
-**Due Monday, November 9 at noon, New York time.** No class November 3; keep building that week.
+    python prototype/app.py
 
-1. Join the [class organization](https://github.com/building-with-ai-f26), then use this template to create a **public** repo named `<netid>-<project-slug>`. Ask Christian or Hew if the organization is missing from the owner list.
-2. Set up Git and one coding agent during the week of October 27. Follow the [Icerynk setup guide](https://www.icerynk.com/c/fa26-tech-gb-2160-dm2-f2/content/pre-class-setup-github-openrouter-your-coding-agent).
-3. Publish [`docs/index.html`](./docs/index.html): **Settings → Pages → Deploy from a branch → main → /docs → Save**. When deployment finishes, open `https://building-with-ai-f26.github.io/<your-repo-name>/`.
-4. Fill in PRD v1: a reachable user, their painful before/after workflow, one core workflow, and three non-goals.
-5. Build a rough local prototype. Add a screenshot or GIF and an honest Build 1 log to the Product Page, including progress, learning, problems, costs, and hours.
-6. Push meaningful commits on **at least two separate days each week outside class**, including the November 3 break.
-7. Submit your **Product Page URL and repository URL in Icerynk**. Come ready to demo the prototype in two minutes on November 10.
+Then open http://127.0.0.1:8765. Stop with Ctrl+C. If port 8765 is already occupied by the existing prototype, use `python prototype/app.py --port 8766` and open that port instead. Do not terminate unrelated processes.
 
-Create your PostHog account in Week 1. Install it on the Product Page and local app in **Build 2**, then verify events. The Product Page is public from Build 1; the app can stay local through Week 4.
+Optional: Ollama on http://127.0.0.1:11434 with an installed model. No model is downloaded automatically. The app remains usable without it.
 
-## Repository map
+## Verify
 
-| File / folder | Purpose |
-| --- | --- |
-| [`docs/index.html`](./docs/index.html) | Required public pitch, living PRD, and weekly build log. Update with actual work and evidence. |
-| [`Intent.md`](./Intent.md), [`Plan.md`](./Plan.md), [`journal/`](./journal/) | Optional drafting aids. No duplicate submission is required. |
-| [`AGENTS.md`](./AGENTS.md) | Local run commands, project context, and agent rules. Build 2 onward. |
-| [`tests/`](./tests/) | Verification guidance. Build 4 offers Track A domain evals **or** Track B user replays. |
-| [`SPONSOR_MEMO.md`](./SPONSOR_MEMO.md) | One-page recommendation backed by actual usage, full costs, and risks. Due December 14 at noon. |
+    python -m unittest discover -s prototype -p "test_*.py" -v
 
-[Icerynk](https://www.icerynk.com/c/fa26-tech-gb-2160-dm2-f2/content) holds the assignment instructions and submissions.
+44 unit/API tests cover qualification, evidence, duplicates, suppression, timing, local meetings, revisions, model-result validation and adventure isolation. Prior browser checks were performed separately with Edge on synthetic temporary databases. They are described in the product page; this repository does not claim a portable automated browser runner.
 
-## Local setup
+## Preview the product page
 
-Clone **your own repository** and ask your coding agent to document the exact install and run commands here and in `AGENTS.md`.
+    python -m http.server 8780 --bind 127.0.0.1 --directory docs
 
-```bash
-git clone https://github.com/building-with-ai-f26/<your-repo-name>.git
-cd <your-repo-name>
-```
+Open http://127.0.0.1:8780. This serves only the static page and screenshots.
 
-If your app needs API keys, use a local environment file such as `.env`. Keep private keys out of source code, browser code, screenshots, and commits. The template ignores `.env`; `.env.example` contains placeholders only.
+## Publish after approval
+Create a public repository from the class template in `building-with-ai-f26`, named `<netid>-adventure-desk`; confirm the actual netid and owner first. Copy these prepared changes into that repository, commit with the builder's real configured identity, and push. Configure Pages: main branch, /docs. Verify the resulting page and repository URLs, then submit those two URLs in Icerynk. This preparation has not published or submitted anything.
+
+Do not upload local databases, backups, credentials, private logs or unrelated files. `.gitignore` excludes runtime data. The public page must remain a showcase; do not expose the localhost Python server to the Internet.
+
+## Scope
+Four scoring dimensions; up to 50 new adventures; review-only prototype. No external email/calendar/CRM connections or autonomous actions. Matching names/domains share opt-out suppression. Scores and model output require human review. See the PRD for non-goals and unverified assumptions.

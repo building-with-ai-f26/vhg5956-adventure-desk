@@ -4,14 +4,14 @@
 
 ## 1. Project Overview
 - **What this repo builds:** [1–2 sentence summary]
-- **Primary user & core workflow:** [See the living PRD in `docs/index.html`]
-- **Tech stack:** [e.g., Python 3.12 / FastAPI / Next.js / SQLite / OpenRouter API]
+- **Primary user & core workflow:** See the living PRD in `docs/index.html`.
+- **Tech stack:** Python 3.12 standard library, SQLite, HTML/JS; optional local Ollama.
 
 ## 2. Commands
-- **Install dependencies:** `[e.g., npm install / uv sync]`
-- **Run locally:** `[e.g., npm run dev]`
-- **Run deterministic tests:** `[e.g., pytest / npm test]`
-- **Run model evals:** `[e.g., python tests/eval.py]`
+- **Install dependencies:** `No dependency install required.`
+- **Run locally:** `python prototype/app.py`
+- **Run deterministic tests:** `python -m unittest discover -s prototype -p "test_*.py" -v`
+- **Run model evals:** `No general model evaluation suite yet; use the UI for an optional local review.`
 
 ## 3. Non-Negotiable Engineering Rules
 1. **Plan before coding:** Before touching multiple files, propose a brief plan and wait for approval.
