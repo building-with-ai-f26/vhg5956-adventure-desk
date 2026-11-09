@@ -1,0 +1,7 @@
+(function(root){
+'use strict';
+function date(s){if(typeof s!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(s))throw Error('Use a complete YYYY-MM-DD date');const t=Date.parse(s+'T00:00:00Z');if(!Number.isFinite(t)||new Date(t).toISOString().slice(0,10)!==s)throw Error('Invalid calendar date');return t;}
+function partition(c){if(!c.acquired)return {before:[],after:[],unknown:c.claims,blocked:true};const cutoff=date(c.acquired),before=[],after=[],unknown=[];for(const x of c.claims){if(!x.published||!x.event){unknown.push(x);continue;}const pub=date(x.published),event=date(x.event);if(pub<=cutoff&&event<=cutoff)before.push(x);else after.push(x);}return {before,after,unknown,blocked:false};}
+function compare(now,base){for(const x of [now,base]){date(x.observed);date(x.published);date(x.asof);if(date(x.observed)>date(x.asof)||date(x.published)>date(x.asof))throw Error('Observation/publication falls after the allowed as-of date');if(!Number.isFinite(x.value))throw Error('Missing numerical value');if(!x.source||!x.vintage)throw Error('Source and data vintage required');}for(const k of ['metric','geography','asset','unit','basis','frequency','method'])if(!now[k]||now[k]!==base[k])throw Error('Baseline mismatch: '+k);const delta=now.value-base.value;return {delta,percent:base.value===0?null:delta/Math.abs(base.value)*100};}
+const api={date,partition,compare};if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.HistoryEngine=api;
+})(typeof window==='undefined'?{}:window);
