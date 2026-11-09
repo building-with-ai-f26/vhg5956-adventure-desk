@@ -4,7 +4,7 @@ const CASES = [
     "name": "505 Oak Avenue, Carlsbad Village",
     "kind": "Historical research lead",
     "acquired": null,
-    "status": "Acquisition date, deed and economics unverified",
+    "status": "Acquisition date, deed and economics unverified | Secondary reported property sale: 2021-10-22 (not a verified CPP acquisition)",
     "claims": [
       {
         "text": "Indexed City permit text associates 505 Oak Avenue Partners LLC / Vic Gausepohl with older retail. This is not a verified purchase deed.",
@@ -35,6 +35,21 @@ const CASES = [
         "units": "qualitative claim",
         "basis": "not applicable",
         "vintage": "retrieved 2026-11-09; original vintage unverified"
+      },
+      {
+        "text": "PropertyShark reports a property sale on 2021-10-22. This does not verify the purchaser, founder ownership or CPP acquisition. Do not substitute this for a verified closing date in the investment reconstruction.",
+        "url": "https://www.propertyshark.com/mason/Property/54068505/505-Oak-Ave-Carlsbad-CA-92008/",
+        "published": null,
+        "event": "2021-10-22",
+        "retrieved": "2026-11-09",
+        "confidence": "Secondary property record; deed/purchaser not verified",
+        "type": "reported sale date",
+        "status": "reported, not ownership-verified",
+        "geography": "Carlsbad Village, CA",
+        "asset": "Retail",
+        "units": "sale event date",
+        "basis": "not applicable",
+        "vintage": "retrieved 2026-11-09; original publication unknown"
       }
     ]
   },
@@ -43,7 +58,7 @@ const CASES = [
     "name": "3060 State Street, Carlsbad Village",
     "kind": "Historical research lead",
     "acquired": null,
-    "status": "Distinct parcel; registered-agent role does not prove equity ownership",
+    "status": "Distinct parcel; registered-agent role does not prove equity ownership | Secondary reported property sale: 2020-08-06 (not a verified CPP acquisition)",
     "claims": [
       {
         "text": "Indexed City permit text names JVK FMK Venture I LLC and retail-to-restaurant conversion. Acquisition date and beneficial ownership remain unverified.",
@@ -89,6 +104,21 @@ const CASES = [
         "units": "vacancy %; asking rent $/SF/month NNN",
         "basis": "nominal asking rent; not effective rent or NOI",
         "vintage": "Q2 2020 report; release date unverified"
+      },
+      {
+        "text": "PropertyShark reports a property sale on 2020-08-06. This does not verify the purchaser, founder ownership or CPP acquisition. Do not substitute this for a verified closing date in the investment reconstruction.",
+        "url": "https://www.propertyshark.com/mason/Property/54068386/3060-State-St-Carlsbad-CA-92008/",
+        "published": null,
+        "event": "2020-08-06",
+        "retrieved": "2026-11-09",
+        "confidence": "Secondary property record; deed/purchaser not verified",
+        "type": "reported sale date",
+        "status": "reported, not ownership-verified",
+        "geography": "Carlsbad Village, CA",
+        "asset": "Retail",
+        "units": "sale event date",
+        "basis": "not applicable",
+        "vintage": "retrieved 2026-11-09; original publication unknown"
       }
     ]
   },
