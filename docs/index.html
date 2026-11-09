@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>[Your Product Name] · Building with AI (Fall 2026)</title>
+  <title>Adventure Desk · Building with AI (Fall 2026)</title>
 
   <!-- Week 1: create your PostHog account only.
        Build 2: paste your project's current PostHog web snippet here,
@@ -137,129 +137,13 @@
       font-size: 13px;
       color: var(--muted);
     }
-  </style>
+  img{max-width:100%;height:auto;border:1px solid var(--border);border-radius:10px}figure{margin:16px 0}figcaption{font-size:13px;color:var(--muted)}.note{padding:12px;background:#eff6ff;border-radius:8px}code{overflow-wrap:anywhere}@media(max-width:500px){.container{padding:24px 14px}section{padding:20px 16px}h1{font-size:30px}}
+</style>
 </head>
-<body>
-  <div class="container">
-    <!-- HERO / PRODUCT PITCH -->
-    <header>
-      <span class="eyebrow">NYU Stern · Building with AI · Fall 2026</span>
-      <h1>[Your Product Name]</h1>
-      <p class="tagline">[One clear sentence: Who is this for, and what painful job does it do for them?]</p>
-      <div class="cta-row">
-        <a class="btn" href="#live-demo" onclick="window.posthog && posthog.capture('clicked_try_product')">See the Product →</a>
-        <a class="btn btn-secondary" href="#prd">Read the Living PRD</a>
-        <a class="btn btn-secondary" href="#build-log">Weekly Build Log</a>
-      </div>
-    </header>
-
-    <!-- DEMO / SCREENSHOT / VIDEO SHOWCASE -->
-    <section id="live-demo">
-      <h2>Product Showcase (Prototype / Live App / 2-Min Video)</h2>
-      <p>
-        <strong>Current Status:</strong> [Build 1: local prototype / Builds 2–4: local app / Build 5: cloud app]<br />
-        <strong>Demo:</strong> [Add a screenshot or GIF now; add the live cloud app URL in Build 5.]
-      </p>
-      <p class="meta">
-        Ask your coding agent to embed a screenshot or GIF of your local prototype for Build 1. Keep this evidence current, then add your cloud app link and two-minute video in Build 5.
-      </p>
-    </section>
-
-    <!-- LIVING PRD (Updated every week!) -->
-    <section id="prd">
-      <h2>Living PRD (Product Requirements Document)</h2>
-      <p class="meta">Updated every week as we test with real users and learn what works.</p>
-
-      <h3>1. Target User & The Job to Be Done</h3>
-      <p><strong>Who is this for?</strong> [Name a specific, reachable person or role you have direct access to.]</p>
-      <p><strong>The painful "Before" workflow:</strong> [How do they do this today, and why is it slow, manual, or broken?]</p>
-      <p><strong>The "After" workflow with this product:</strong> [What does your tool do for them in one sitting?]</p>
-
-      <h3>2. Scope & Explicit Non-Goals</h3>
-      <ul>
-        <li><strong>In Scope (Core Workflow):</strong> [The 1 main workflow this product does reliably]</li>
-        <li><strong>Out of Scope #1:</strong> [Feature you are deliberately NOT building in 6 weeks]</li>
-        <li><strong>Out of Scope #2:</strong> [Feature you are deliberately NOT building in 6 weeks]</li>
-        <li><strong>Out of Scope #3:</strong> [Feature you are deliberately NOT building in 6 weeks]</li>
-      </ul>
-
-      <h3>3. How It Works Under the Hood & Riskiest Assumption (Week 2+)</h3>
-      <p><strong>Riskiest Assumption:</strong> [What is the #1 technical or user risk that could sink this product?]</p>
-      <p><strong>Simple Architecture:</strong> [User Input] → [Your App / Server] → [AI Model / Tool] → [Output]</p>
-
-      <h3>4. Unit Economics & Analytics Snapshot (Updated Weekly)</h3>
-      <div class="grid-2">
-        <div class="stat-box">
-          <div class="stat-label">Cumulative Build Spend</div>
-          <div class="stat-value">[Record actual spend]</div>
-        </div>
-        <div class="stat-box">
-          <div class="stat-label">Est. Cost Per User Run</div>
-          <div class="stat-value">[Not yet estimated]</div>
-        </div>
-        <div class="stat-box">
-          <div class="stat-label">User Evidence (Analytics from Build 2)</div>
-          <div class="stat-value">[Not yet measured]</div>
-        </div>
-        <div class="stat-box">
-          <div class="stat-label">Sponsor Call (Week 6)</div>
-          <div class="stat-value">TBD</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- WEEKLY BUILD LOG (Updated at least twice a week via Git commits) -->
-    <section id="build-log">
-      <h2>Weekly Build Log</h2>
-      <p class="meta">Build on at least two separate days each week outside class, including the November 3 break. Push commits and log actual progress, failures, PRD changes, costs, and hours here. All build deadlines are noon, New York time.</p>
-
-      <div class="log-entry">
-        <h3>Build 1 · Intent.md & Throwaway Prototype (Due Nov 9)</h3>
-        <ul>
-          <li><strong>What shipped:</strong> [What you actually built; link your local prototype screenshot or GIF above.]</li>
-          <li><strong>Things learned with AI:</strong> [What you learned from AI practice and Terminus Episodes 1 and 2.]</li>
-          <li><strong>What broke / changed in PRD:</strong> [Fill in]</li>
-          <li><strong>Cost & time this week:</strong> $[0.00] · [0] hours</li>
-        </ul>
-      </div>
-
-      <div class="log-entry">
-        <h3>Build 2 · Smallest Local Version & PostHog (Due Nov 16)</h3>
-        <ul>
-          <li><strong>What shipped:</strong> [Local working slice, PostHog verified on this page and the local app, PRD v2, and local setup in AGENTS.md]</li>
-          <li><strong>What broke / changed in PRD:</strong> [Fill in]</li>
-          <li><strong>Cost & time this week:</strong> $[0.00] · [0] hours</li>
-        </ul>
-      </div>
-
-      <div class="log-entry">
-        <h3>Build 3 · Build.exe: The Core Workflow (Due Nov 23)</h3>
-        <ul>
-          <li><strong>What shipped:</strong> [End-to-end workflow working with real inputs + PostHog funnel events]</li>
-          <li><strong>What broke / changed in PRD:</strong> [Fill in]</li>
-          <li><strong>Cost & time this week:</strong> $[0.00] · [0] hours</li>
-        </ul>
-      </div>
-
-      <div class="log-entry">
-        <h3>Build 4 · Test.py: Choose Track A or Track B (Due Nov 30)</h3>
-        <ul>
-          <li><strong>Chosen track:</strong> [A: 10-case domain eval and one outside target-user review; OR B: 3–5 outside users and replay findings]</li>
-          <li><strong>Results and improvements:</strong> [Before/after evidence; for Track B, fixes to the top three friction points]</li>
-          <li><strong>PRD v4 changes:</strong> [What the evidence changed]</li>
-          <li><strong>Cost & time this week:</strong> $[0.00] · [0] hours</li>
-        </ul>
-      </div>
-
-      <div class="log-entry">
-        <h3>Build 5 · Ship.installer: Launch Ops, Rollback Check & 2-Min Video (Due Dec 7)</h3>
-        <ul>
-          <li><strong>Launch Ops & Safety:</strong> [Verified no exposed keys, set spend cap, tested 2-minute rollback]</li>
-          <li><strong>2-Minute Video & Final Polish:</strong> [Link/embed above]</li>
-          <li><strong>Cost & time this week:</strong> $[0.00] · [0] hours</li>
-        </ul>
-      </div>
-    </section>
-  </div>
-</body>
-</html>
+<body><main class="container">
+<header><span class="eyebrow">Building with AI · Build 1 · Fall 2026</span><h1>Adventure Desk</h1><p class="tagline">Turn an outreach or research list into a clear next-action queue, with evidence, ownership and follow-up in one local workspace.</p><p class="meta">Builder: Vic · Local prototype · Updated November 9, 2026</p><nav class="cta-row"><a class="btn" href="#live-demo">See the prototype</a><a class="btn btn-secondary" href="#prd">Read the PRD</a><a class="btn btn-secondary" href="#build-log">Build log</a></nav></header>
+<section id="live-demo"><h2>Choose your own adventure</h2><p>Start with sales discovery, partnerships, research interviews, event outreach or investment sourcing. Or define a custom objective, record labels and four scoring criteria. Each adventure keeps its records and settings separate.</p><p class="note"><strong>Build 1 status:</strong> working local prototype. No email, CRM or calendar is connected. Outreach and meeting actions are explicitly simulated or local plans. The app does not send messages.</p><figure><img src="assets/prototype-desktop.png" alt="Adventure Desk research-interview workspace showing a fictional gardening group, scoring controls and workflow tabs" width="1440" loading="eager"><figcaption>Actual desktop screenshot from an isolated synthetic test: a research-interview adventure, not an investment-company workflow. No real customer results are shown.</figcaption></figure><p><a href="assets/prototype-mobile.png">View the mobile-layout screenshot</a>. The application runs locally; this page is the public product showcase, not a hosted app.</p><h3>Two-minute demo</h3><ol><li>Create a research adventure with a clear objective.</li><li>Preview and import a fictional CSV record, then inspect its evidence and scores.</li><li>Open the action queue, prepare a draft and simulate a reply. Show that replies stop outreach follow-ups.</li><li>Switch back to investment sourcing to show that data stays separate. Show durable opt-out protection and the evidence revision history.</li></ol></section>
+<section id="prd"><h2>Living PRD · v1</h2><h3>1. Reachable user and job</h3><p><strong>Initial user:</strong> me, organizing a list of people or organizations to research and contact. The first outside-user test would be with a classmate who organizes interviews or partnership conversations; that test has not happened yet.</p><p><strong>Before:</strong> evidence, outreach status and next steps can become scattered across a list, notes and messages. It is difficult to see who owns a record, what is missing and whether a follow-up should stop. This is the problem hypothesis, not a validated finding from customer interviews.</p><p><strong>After:</strong> in one sitting, define an objective, import a list, review evidence, assign ownership and see the next safe internal action for every record.</p><h3>2. One core workflow</h3><p>Objective → CSV preview/import → evidence and criteria review → owner assignment → next-action queue → reviewable draft or local meeting/next-step plan.</p><p>The prototype includes provenance references, unknown scores, duplicate checks, adjustable weights and waiting periods, a pause control and an audit trail. Source references are not fetched or verified automatically. A local Ollama model can summarize selected evidence; it cannot change scores or execute actions.</p><h3>3. Three explicit non-goals</h3><ul><li>Autonomous email sending, real calendar booking or CRM synchronization.</li><li>A general visual branching-automation platform or a company-wide MCP service.</li><li>Production multi-user security, model fine-tuning or automated consequential decisions about people.</li></ul><h3>4. Architecture and riskiest assumption</h3><p><strong>Architecture:</strong> browser UI → localhost Python server → SQLite per adventure, with an optional local Ollama evidence review. Scoring, stop rules and scheduling checks are deterministic. There is no cloud-model fallback.</p><p><strong>Riskiest assumption:</strong> a clear next-action queue will reduce coordination effort enough to justify another tool instead of a spreadsheet or existing CRM. This has not been validated.</p><p><strong>Next test:</strong> ask one reachable organizer to complete a short synthetic list-replay task with their usual method and this prototype. Measure task time, missing-next-step errors and whether they can explain the queue. A proposed success threshold is fewer missed next steps without extra effort; it is not a measured result.</p><h3>5. Evidence and economics</h3><div class="grid-2"><div class="stat-box"><div class="stat-label">Deterministic verification</div><div class="stat-value">44 passing tests</div></div><div class="stat-box"><div class="stat-label">Browser verification</div><div class="stat-value">3 isolated suites</div></div><div class="stat-box"><div class="stat-label">Outside-user validation</div><div class="stat-value">Not yet measured</div></div><div class="stat-box"><div class="stat-label">Per-run total cost</div><div class="stat-value">Not yet estimated</div></div></div><p class="meta">One bounded local-model review completed in about 40 seconds. This is not a general model-quality benchmark. Existing hardware and subscriptions are not allocated into a per-run cost.</p></section>
+<section id="build-log"><h2>Build 1 log · November 9</h2><h3>What was built</h3><p>A local Python/SQLite prototype with isolated adventures, configurable criteria, CSV intake, evidence history, action queues, drafts, local meeting plans and next-step tasks. Optional Ollama inference uses an already installed model. The direction changed from investment sourcing to a configurable workflow for several outreach/research use cases.</p><h3>What I learned with AI</h3><p>The useful separation is between a model that helps read evidence and deterministic rules that control actions. I used AI-assisted implementation and solo hypothesis-driven verification. Adjustable scoring weights, follow-up waits and neural model weights are different concepts. This prototype changes the first two, not model parameters.</p><p>Terminus episodes 1–2 completion and personal reflections are not verified here. No completion claim is being made.</p><h3>What broke and changed</h3><ul><li>Windows tests exposed SQLite connections left open. Explicit connection cleanup fixed the file locks.</li><li>An opt-out could be overwritten by a later reply state. Durable suppression now survives later events and applies to matching entities across adventures.</li><li>Two open evidence forms could overwrite one another. Version checks now reject stale edits.</li><li>Blank or truncated model responses looked successful. The adapter now rejects incomplete results.</li><li>Generalizing labels alone would reinterpret old investment scores. Separate adventure databases and a criterion-change guard preserve their meaning.</li></ul><h3>Verification and limits</h3><p>44 unit/API tests pass. Three headless Edge suites checked intake-to-meeting flow, workflow hardening and a noninvestment adventure from creation through import, draft, switching and reload. Desktop/mobile checks found no page errors or horizontal overflow. Tests use temporary databases and fictional data. No real outreach was sent. Production security, customer demand and broad model accuracy remain unverified.</p><h3>Actual cost and time</h3><p><strong>New paid software or API purchases made for this build:</strong> none recorded. Existing AI subscriptions, PC hardware and electricity are not included; total spend has not been reconciled.</p><p><strong>Time estimate:</strong> approximately 5 hours, as my own estimate including idea exploration and research. This is not measured coding time.</p><p><strong>Git history:</strong> preparation is current work; earlier local development was not recorded as personal Git commits. No backdated commits are being claimed. The course's two-separate-days weekly commit requirement must be assessed against actual history.</p></section>
+<section><h2>Next build</h2><p>Validate the core flow with an outside user, improve the most confusing steps and establish actual time/cost measurements. PostHog account setup is a separate Week 1 task; instrumentation and verified events belong to Build 2. Analytics is not installed on this draft page or the local app.</p><p class="meta">Source structure is based on the <a href="https://github.com/building-with-ai-f26/project-template">course project template</a>. All screenshots use synthetic test data. This is a course prototype, not a production service.</p></section>
+</main></body></html>
