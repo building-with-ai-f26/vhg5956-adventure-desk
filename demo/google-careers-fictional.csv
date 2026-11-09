@@ -1,0 +1,4 @@
+name,domain,category,stage,owner,evidence,source_url,score_1,score_2,score_3,score_4
+Alex Example (fictional),alex.example.invalid,Product management,Research first,Vic,Fictional persona NOT a Google employee. Placeholder email: alex@example.invalid. Ask about PM career paths and transferable skills. Verify identity and public contact channel before real outreach.,,90,85,40,60
+Jordan Sample (fictional),jordan.example.invalid,Software engineering,Research first,Vic,Fictional persona NOT a Google employee. Placeholder email: jordan@example.invalid. Ask about engineering interviews and portfolio preparation. No real contact information supplied.,,85,90,40,50
+Taylor Demo (fictional),taylor.example.invalid,Recruiting perspective,Research first,Vic,Fictional persona NOT a Google recruiter. Placeholder email: taylor@example.invalid. Ask about application processes and networking etiquette. Do not send to placeholder addresses.,,80,85,40,45
