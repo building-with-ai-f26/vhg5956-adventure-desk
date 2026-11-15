@@ -1,0 +1,1 @@
+ALTER TABLE `qa_searches` ADD `review_json` text;

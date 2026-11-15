@@ -1,0 +1,32 @@
+[
+  {
+    "id": "G0",
+    "name": "scope",
+    "requirement": "Intent, category, original wording, optional constraints, and decision owner recorded."
+  },
+  {
+    "id": "G1",
+    "name": "evidence_inventory",
+    "requirement": "Source register and known/unknown/conflicting claims established."
+  },
+  {
+    "id": "G2",
+    "name": "economic_model",
+    "requirement": "Material drivers, normalization, sensitivities, and unsupported assumptions disclosed."
+  },
+  {
+    "id": "G3",
+    "name": "independent_review",
+    "requirement": "Two sealed checkpoints and cross-model grades or an explicit blocked status."
+  },
+  {
+    "id": "G4",
+    "name": "decision",
+    "requirement": "Decision rationale, conditions, dissent, owner, and next actions recorded."
+  },
+  {
+    "id": "G5",
+    "name": "room_handoff",
+    "requirement": "Room-specific document indexes, gaps, access controls, and transition permissions documented."
+  }
+]

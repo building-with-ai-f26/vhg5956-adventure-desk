@@ -1,0 +1,10 @@
+{
+  "kind": "Local reconstruction from the actual normal-chat design specification",
+  "chat": "https://chatgpt.com/c/6af3d9fd-a428-83ea-add4-c0148c6226f1",
+  "spec_sha256": "f108c91974aab62d691f46cc47f0f7c82fcd46e4cadacd06bc971fb269b5cda6",
+  "original_research_zip_recovered": false,
+  "research_report_hash_is_not_this_artifact": true,
+  "weights_trained": false,
+  "semantic_cases_executed": false,
+  "base_library_modified": false
+}

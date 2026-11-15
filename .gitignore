@@ -40,3 +40,11 @@ prototype/adventures/
 .env
 .env.*
 !.env.example
+
+# Geez scout: never publish runtime data, weights or private installation records
+**/*.sqlite
+**/*.sqlite-*
+geez-scout/.*-state/
+geez-scout/.baseline-artifacts/
+geez-scout/.local-runtime/
+geez-scout/.qa-*/

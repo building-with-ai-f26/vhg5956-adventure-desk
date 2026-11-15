@@ -1,0 +1,11 @@
+# Local scouting and PostHog milestone — November 14, 2026
+
+The investment template now has an additive Node.js scouting module in `geez-scout/`; the original Python prototype is preserved. A user can enter a thesis directly or develop a proposal, explicitly accept it and choose when to research. Real public-source company prospects and broker advertisements replace the old fixed candidate pool in this workflow. Sale status and financial uncertainty remain explicit.
+
+All product inference uses local DeepSeek 14.8B and Gemma 11.9B, sequentially. Gemma critiques the saved initial work; DeepSeek revises. Prompt guidance is not model training, and the final revision is not independently approved. One actual mixed-source electronics-wholesale run completed with 11 model calls and three source-backed prospects. Two had useful activity evidence; the third exposed broken abbreviation splitting. A focused parser fix preserves complete short paragraphs. Broad model usefulness and a full nonblank browser handoff remain unqualified; further tuning is deferred.
+
+PostHog now receives explicit, anonymous product events through its official Capture API. The existing project showed `desk_opened`, `research_started` and `research_completed` in Activity. Manual blank-input testing is labeled by onboarding state; these are QA events, not customer traction. No form content or session recordings are sent. The capped free plan was selected without adding a payment method. Analytics is the limited cloud telemetry exception; model inference stays local.
+
+Verification: 20 focused automated checks, 16 actual HTTP checks on the release copy, current Chrome sign-in/optional/blank/saved-reload checks, and 59 mechanical assertions on the actual scouting receipt. These counts cover different scopes, not a combined accuracy score. No full ten-runs-per-feature, general model-quality or complete-assignment claim is made.
+
+No new software/API purchase was made during this release step. Existing subscriptions, hardware and electricity are not reconciled into a total cost. Substantial development and QA took place across several days between uploads; total hours were not measured. No outreach was sent. GitHub publication does not submit the milestone in Icerynk.

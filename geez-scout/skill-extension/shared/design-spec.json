@@ -1,0 +1,1658 @@
+{
+  "spec_version": "geez-extension-design-1.0",
+  "status": "design_specification_not_executed",
+  "scope": {
+    "families": 3,
+    "category_profiles": 16,
+    "skill_entrypoints": 51,
+    "composition": "3 family orchestrators plus 16 category overlays per family",
+    "base_library": "Preserve the existing 174-file base repository unchanged.",
+    "source_access": "No live sources accessed or verified for this specification.",
+    "jurisdiction": "Determine from user inputs; verify applicable rules before relying on them.",
+    "thresholds": "User-defined or evidence-derived only; never invent regulatory, investment, or operating thresholds."
+  },
+  "shared_contract": {
+    "routing": {
+      "thesis_builder": "User wants to discover, develop, refine, or document an investment thesis.",
+      "known_deal": "User has an identified target, property, business, or opportunity to evaluate.",
+      "value_creation": "User wants a post-acquisition operating, integration, asset-management, or growth plan.",
+      "category_overlay": "Select exactly one primary category and optionally apply secondary overlays with explicit attribution.",
+      "handoff": "Thesis criteria may inform deal-fit scoring; known-deal findings may inform value creation. Neither transition is automatic."
+    },
+    "inputs": {
+      "original_user_wording": "Preserve verbatim, alongside any structured interpretation.",
+      "optional": [
+        "geography",
+        "capital_available",
+        "financing_preferences",
+        "investment_horizon",
+        "target_returns",
+        "risk_tolerance",
+        "industry_preferences",
+        "operating_capabilities",
+        "ownership_structure",
+        "exit_preferences"
+      ],
+      "missing_optional_inputs": "Record as unknown; do not fabricate or silently impose constraints."
+    },
+    "evidence": {
+      "states": [
+        "known",
+        "unknown",
+        "conflicting",
+        "inferred",
+        "not_applicable"
+      ],
+      "record_fields": [
+        "claim",
+        "state",
+        "source_id",
+        "document_location",
+        "observation_date",
+        "period_covered",
+        "original_text",
+        "interpretation",
+        "confidence_basis",
+        "conflicts",
+        "verification_action",
+        "decision_impact"
+      ],
+      "rules": [
+        "Missing evidence is not negative evidence.",
+        "Distinguish seller assertions from independently corroborated facts.",
+        "Never present assumptions, benchmarks, or estimates as observed results.",
+        "Reconcile period definitions, entity boundaries, units, accounting methods, and dates before comparisons.",
+        "Keep thesis fit, deal quality, evidence sufficiency, and execution feasibility separate.",
+        "Preserve conflicting evidence until reconciled."
+      ]
+    },
+    "scoring": {
+      "dimensions": [
+        "thesis_fit",
+        "intrinsic_deal_quality",
+        "risk_exposure",
+        "evidence_sufficiency",
+        "execution_feasibility"
+      ],
+      "scale": "Defined in a versioned user-approved rubric, not inferred from missing information.",
+      "insufficient_evidence": "Use ungraded or provisional rather than an invented score.",
+      "decision_states": [
+        "advance",
+        "conditional_advance",
+        "hold_for_information",
+        "decline",
+        "not_yet_assessable"
+      ]
+    },
+    "modified_vqa": {
+      "models": [
+        "DeepSeek R1 8B",
+        "Gemma 4 12B"
+      ],
+      "thinking": "enabled",
+      "execution": "sequential",
+      "checkpoint": "Seal each model's evidence snapshot, reasoning summary, assumptions, outputs, and hash before external grading.",
+      "cross_grading": "DeepSeek grades only Gemma's sealed checkpoint; Gemma grades only DeepSeek's sealed checkpoint.",
+      "self_checks": "Debugging only; never count as independent grades.",
+      "disagreement": "Record distinct claims, evidence references, falsifiers, and adjudication requirements.",
+      "fallback": "No 4B, Flash, smaller, or same-model fallback. Stop and report unavailable capacity.",
+      "prohibited_claims": [
+        "model competency proven by structural tests",
+        "weight training performed",
+        "live source access without an access record",
+        "VDR provisioned without a provider receipt",
+        "deployment completed without runtime evidence"
+      ]
+    },
+    "data_rooms": {
+      "seller_materials": {
+        "purpose": "Catalog materials provided by the seller or intermediary.",
+        "states": [
+          "requested",
+          "received",
+          "partial",
+          "superseded",
+          "withheld",
+          "not_applicable"
+        ],
+        "control": "Preserve originals, provenance, confidentiality, access rights, and seller representations."
+      },
+      "buyer_diligence": {
+        "purpose": "Maintain buyer analyses, requests, independent checks, unresolved issues, decisions, and approvals.",
+        "states": [
+          "planned",
+          "in_progress",
+          "verified",
+          "disputed",
+          "blocked",
+          "closed"
+        ],
+        "control": "Separate buyer work product from seller originals; restrict privileged and sensitive information."
+      },
+      "post_close": {
+        "purpose": "Maintain authorized operating baselines, transition records, ownership, plans, controls, and KPI history.",
+        "states": [
+          "planned",
+          "handoff_pending",
+          "accepted",
+          "operational",
+          "exception",
+          "archived"
+        ],
+        "control": "Create only after appropriate authorization; do not assume ownership or system access."
+      },
+      "common_index_fields": [
+        "room",
+        "folder",
+        "document_id",
+        "filename",
+        "owner",
+        "request_date",
+        "received_date",
+        "period",
+        "version",
+        "source",
+        "access_class",
+        "status",
+        "verification",
+        "open_issue",
+        "next_action"
+      ]
+    },
+    "stage_gates": [
+      {
+        "id": "G0",
+        "name": "scope",
+        "requirement": "Intent, category, original wording, optional constraints, and decision owner recorded."
+      },
+      {
+        "id": "G1",
+        "name": "evidence_inventory",
+        "requirement": "Source register and known/unknown/conflicting claims established."
+      },
+      {
+        "id": "G2",
+        "name": "economic_model",
+        "requirement": "Material drivers, normalization, sensitivities, and unsupported assumptions disclosed."
+      },
+      {
+        "id": "G3",
+        "name": "independent_review",
+        "requirement": "Two sealed checkpoints and cross-model grades or an explicit blocked status."
+      },
+      {
+        "id": "G4",
+        "name": "decision",
+        "requirement": "Decision rationale, conditions, dissent, owner, and next actions recorded."
+      },
+      {
+        "id": "G5",
+        "name": "room_handoff",
+        "requirement": "Room-specific document indexes, gaps, access controls, and transition permissions documented."
+      }
+    ]
+  },
+  "families": {
+    "thesis_builder": {
+      "purpose": "Collaboratively formulate a falsifiable investment thesis before requiring a specific deal.",
+      "execution_steps": [
+        "Capture original request verbatim and distinguish user preferences from AI suggestions.",
+        "Select category and investment strategy; identify optional constraints without inventing missing values.",
+        "Interview user about advantage, capital, operating capabilities, risk, geography, and desired ownership experience.",
+        "Define target customer or tenant, value proposition, market structure, and sources of economic return.",
+        "Develop competing hypotheses and explicit exclusion criteria.",
+        "Map industry-specific drivers, underwriting assumptions, financing dependencies, and exit pathways.",
+        "Define evidence needed to support or falsify each hypothesis.",
+        "Run base, downside, and alternative strategy scenarios using labeled assumptions.",
+        "Use sealed cross-model review to challenge causal claims and hidden dependencies.",
+        "Version the thesis and translate it into sourcing criteria and a deal-fit rubric."
+      ],
+      "output_sections": [
+        "original_request",
+        "thesis_statement",
+        "investor_constraints_and_unknowns",
+        "market_and_category_logic",
+        "competitive_or_operating_advantage",
+        "target_profile",
+        "exclusions",
+        "return_drivers",
+        "assumptions_and_scenarios",
+        "falsifiers",
+        "sourcing_filters",
+        "evidence_register",
+        "review_disagreements",
+        "revision_history"
+      ],
+      "refusal_unknown_gates": [
+        "Do not assert an investable thesis when critical causal assumptions are unsupported; label it a hypothesis.",
+        "Do not imply financing availability, market demand, or regulatory permission without evidence.",
+        "Do not convert unspecified return targets or risk tolerance into defaults.",
+        "Do not recommend unlawful discrimination or prohibited targeting.",
+        "Pause any regulated implementation claim pending qualified jurisdiction-specific review."
+      ],
+      "data_room_handoff": {
+        "seller_materials": "Generate a future seller request taxonomy, not an existing room.",
+        "buyer_diligence": "Create thesis evidence pack, source register, model assumptions, falsifiers, and diligence priorities.",
+        "post_close": "Create a hypothetical KPI and operating-capability blueprint, clearly marked pre-acquisition."
+      }
+    },
+    "known_deal": {
+      "purpose": "Evaluate an identified opportunity independently of whether it matches the user's thesis.",
+      "execution_steps": [
+        "Capture the exact opportunity description and distinguish verified identity from seller claims.",
+        "Determine asset/entity perimeter, transaction structure, ownership interests, and available materials.",
+        "Inventory evidence by source, date, period, and known/unknown/conflicting state.",
+        "Apply category-specific financial and operational normalization.",
+        "Build price, cash flow, capital needs, financing, downside, and exit scenarios when inputs permit.",
+        "Score thesis fit separately from intrinsic deal quality and execution feasibility.",
+        "Test category-specific diligence hypotheses and quantify material sensitivities where supportable.",
+        "Record red flags, unresolved conflicts, required third-party specialists, and requests.",
+        "Obtain sealed independent model checkpoints and reciprocal cross-grades.",
+        "Issue a conditional decision, evidence sufficiency rating, diligence plan, and room index."
+      ],
+      "output_sections": [
+        "opportunity_identity",
+        "transaction_perimeter",
+        "original_user_wording",
+        "seller_claims",
+        "verified_facts",
+        "unknowns_and_conflicts",
+        "normalized_economics",
+        "valuation_scenarios",
+        "thesis_fit",
+        "deal_quality",
+        "risks",
+        "execution_feasibility",
+        "diligence_tests",
+        "cross_model_review",
+        "decision_and_conditions",
+        "document_requests"
+      ],
+      "refusal_unknown_gates": [
+        "Do not invent purchase price, EBITDA, NOI, ARR, cap rate, occupancy, financing, or legal status.",
+        "If essential cash flow or transaction perimeter is unknown, withhold definitive valuation and investment grade.",
+        "Do not label missing documentation fraud or failure.",
+        "Do not equate high thesis fit with a good deal or low thesis fit with poor intrinsic quality.",
+        "Do not represent preliminary analysis as legal, tax, environmental, engineering, or medical diligence."
+      ],
+      "data_room_handoff": {
+        "seller_materials": "Index originals and requests, preserving seller provenance and versions.",
+        "buyer_diligence": "Maintain reconciliation workbooks, diligence findings, risk log, approvals, and external specialist reports.",
+        "post_close": "Prepare a conditional transition checklist only; do not transfer confidential materials without authorization."
+      }
+    },
+    "value_creation": {
+      "purpose": "Build an evidence-based post-acquisition operating and growth plan, including an explicit pre-close hypothetical mode.",
+      "execution_steps": [
+        "Confirm whether acquisition is planned, signed, or closed and what operating authority exists.",
+        "Establish verified opening baseline and identify unavailable metrics.",
+        "Map value drivers to controllable initiatives, dependencies, costs, owners, and time to impact.",
+        "Separate revenue growth, margin improvement, working capital, capital expenditure, risk reduction, and multiple assumptions.",
+        "Create transition, 30/60/90-day, first-year, and multi-year workstreams without assuming all are immediately executable.",
+        "Estimate implementation resources, cash costs, disruption, and downside scenarios using labeled inputs.",
+        "Define KPI owners, measurement definitions, cadence, control limits, and intervention triggers.",
+        "Sequence initiatives around critical dependencies and operational capacity.",
+        "Cross-grade sealed plans for feasibility, evidence, downside, and double counting.",
+        "Prepare governance pack, operating dashboard, and authorized post-close data-room handoff."
+      ],
+      "output_sections": [
+        "ownership_and_authority_state",
+        "baseline",
+        "value_driver_tree",
+        "initiative_portfolio",
+        "financial_bridge",
+        "costs_and_capacity",
+        "dependencies",
+        "30_60_90_day_plan",
+        "year_one_plan",
+        "multi_year_plan",
+        "kpi_dictionary",
+        "downside_triggers",
+        "governance",
+        "cross_model_review",
+        "data_room_transition"
+      ],
+      "refusal_unknown_gates": [
+        "Do not assert a realized synergy, savings, or growth outcome before measurement.",
+        "Do not authorize layoffs, patient-care changes, tenant actions, or regulated activities through an AI plan.",
+        "Do not double count revenue, margin, working capital, or valuation improvements.",
+        "Do not assume post-close access, personnel control, financing, or VDR provisioning.",
+        "If the baseline is unreliable, produce a measurement and stabilization plan before a quantified value claim."
+      ],
+      "data_room_handoff": {
+        "seller_materials": "Preserve permitted source documents and chain of custody.",
+        "buyer_diligence": "Transfer approved findings, unresolved risks, assumptions, and integration commitments.",
+        "post_close": "Define controlled folders for governance, finance, operations, personnel, customers or tenants, assets, compliance, projects, KPI history, and incident logs."
+      }
+    }
+  },
+  "categories": {
+    "pe_platform_addon": {
+      "decision_changing_evidence": [
+        "Consolidated and standalone financials with acquisition perimeter and intercompany eliminations.",
+        "Organic versus acquired growth, customer concentration, churn, pricing, and margin by business unit.",
+        "Management depth, integration history, debt covenants, and actual synergy realization."
+      ],
+      "economic_drivers": [
+        "Organic volume and price",
+        "gross margin",
+        "operating leverage",
+        "procurement scale",
+        "cross-selling",
+        "integration cost",
+        "working capital",
+        "leverage and exit valuation"
+      ],
+      "normalization_traps": [
+        "Double-counted synergies",
+        "acquisition-driven growth presented as organic",
+        "unrealistic recurring add-backs",
+        "inconsistent EBITDA definitions",
+        "unallocated corporate costs",
+        "earnout and contingent liability omissions"
+      ],
+      "thesis_questions": [
+        "What repeatable platform capability makes add-ons worth more under common ownership?",
+        "Which fragmented subsectors have compatible customers, systems, and operating models?",
+        "What acquisition pace can management integrate without damaging organic performance?"
+      ],
+      "known_deal_tests": [
+        "Rebuild EBITDA and free cash flow by entity and transaction perimeter.",
+        "Separate acquired from organic revenue and retention trends.",
+        "Test synergy assumptions against historical integration costs and realized results.",
+        "Stress covenant headroom, integration delays, and customer losses."
+      ],
+      "baseline_kpis": [
+        "organic revenue growth",
+        "adjusted and reported EBITDA",
+        "free cash flow conversion",
+        "net debt",
+        "customer retention",
+        "integration milestone completion",
+        "working capital days"
+      ],
+      "value_creation": [
+        {
+          "mechanism": "Shared procurement and operating systems",
+          "costs": "Implementation staff, software migration, vendor transition, and disruption.",
+          "downside_trigger": "Service levels deteriorate or realized savings fail to exceed transition costs."
+        },
+        {
+          "mechanism": "Cross-sell and pricing discipline",
+          "costs": "Sales enablement, data cleanup, compensation redesign, and customer support.",
+          "downside_trigger": "Churn or discounting offsets incremental gross profit."
+        }
+      ],
+      "data_room": {
+        "seller": [
+          "Entity organization charts and cap tables",
+          "acquisition agreements and earnouts",
+          "historical consolidated and entity financials",
+          "customer cohorts and contracts",
+          "debt and covenant documents"
+        ],
+        "buyer": [
+          "Quality-of-earnings bridge",
+          "organic-growth reconciliation",
+          "synergy model and integration risk register",
+          "legal-entity and debt structure review"
+        ],
+        "post_close": [
+          "Integration management office",
+          "entity-level KPI packs",
+          "synergy realization ledger",
+          "systems migration controls"
+        ]
+      }
+    },
+    "search_fund": {
+      "decision_changing_evidence": [
+        "Owner dependence and transferable customer relationships.",
+        "Recurring cash generation after market-rate replacement management compensation.",
+        "Seller transition willingness, governance rights, investor capital commitments, and financing terms."
+      ],
+      "economic_drivers": [
+        "Stable recurring demand",
+        "owner replacement",
+        "managerial execution",
+        "customer retention",
+        "debt service",
+        "reinvestment needs",
+        "long-term compounding"
+      ],
+      "normalization_traps": [
+        "Owner salary treated entirely as discretionary",
+        "personal relationships mistaken for transferable goodwill",
+        "understated management bench costs",
+        "unfunded acquisition search and transition expenses"
+      ],
+      "thesis_questions": [
+        "What businesses can a first-time operator manage credibly with available support?",
+        "How much customer and employee continuity depends on the departing owner?",
+        "Which investor governance and financing obligations constrain operating flexibility?"
+      ],
+      "known_deal_tests": [
+        "Recast owner compensation to replacement cost.",
+        "Interview or document key-person dependencies with consent.",
+        "Stress debt service after maintenance capex and working capital.",
+        "Verify transferability of contracts, licenses, and critical relationships."
+      ],
+      "baseline_kpis": [
+        "owner-dependent revenue",
+        "cash conversion",
+        "customer concentration",
+        "employee retention",
+        "debt service coverage",
+        "recurring revenue share",
+        "management vacancy risk"
+      ],
+      "value_creation": [
+        {
+          "mechanism": "Professionalize management and reporting",
+          "costs": "Controller or finance support, systems, and hiring.",
+          "downside_trigger": "Overhead grows faster than sustainable gross profit."
+        },
+        {
+          "mechanism": "Reduce owner dependence through documented processes",
+          "costs": "Transition overlap, training, retention incentives.",
+          "downside_trigger": "Key employees or customers depart during transition."
+        }
+      ],
+      "data_room": {
+        "seller": [
+          "Owner role and compensation",
+          "key customer and employee contracts",
+          "licenses and permits",
+          "historical tax and accounting records",
+          "transition expectations"
+        ],
+        "buyer": [
+          "Owner replacement budget",
+          "operator capability assessment",
+          "financing and governance analysis",
+          "continuity risk map"
+        ],
+        "post_close": [
+          "Delegation matrix",
+          "weekly cash dashboard",
+          "transition playbooks",
+          "investor reporting calendar"
+        ]
+      }
+    },
+    "small_business": {
+      "decision_changing_evidence": [
+        "Bank, tax, bookkeeping, and merchant-processing reconciliation.",
+        "Owner labor, related-party transactions, cash practices, and customer concentration.",
+        "Lease assignment, local reputation, staffing continuity, and equipment condition."
+      ],
+      "economic_drivers": [
+        "Local demand",
+        "repeat customers",
+        "labor productivity",
+        "gross margin",
+        "rent",
+        "equipment utilization",
+        "owner involvement"
+      ],
+      "normalization_traps": [
+        "Seller discretionary earnings inflated by indispensable owner labor",
+        "unrecorded cash assertions",
+        "deferred repairs",
+        "seasonality",
+        "personal expenses without documentation",
+        "working capital excluded from asking price"
+      ],
+      "thesis_questions": [
+        "What local competitive advantage can survive an ownership transition?",
+        "Which operating tasks require the owner versus trained employees?",
+        "What capital and time are needed to maintain equipment and customer service?"
+      ],
+      "known_deal_tests": [
+        "Reconcile deposits, tax returns, POS, and reported revenue.",
+        "Recast owner labor and necessary replacement positions.",
+        "Inspect equipment and maintenance backlog.",
+        "Test customer retention and lease or franchise transfer conditions."
+      ],
+      "baseline_kpis": [
+        "weekly sales",
+        "gross margin",
+        "labor cost ratio",
+        "repeat customer rate",
+        "cash balance",
+        "maintenance backlog",
+        "owner hours"
+      ],
+      "value_creation": [
+        {
+          "mechanism": "Standardize scheduling, purchasing, and local marketing",
+          "costs": "POS tools, training, advertising, and manager time.",
+          "downside_trigger": "Marketing acquisition cost exceeds repeat-customer contribution."
+        },
+        {
+          "mechanism": "Introduce delegated operations",
+          "costs": "Manager compensation, SOP development, and training.",
+          "downside_trigger": "Service quality declines as owner hours fall."
+        }
+      ],
+      "data_room": {
+        "seller": [
+          "Tax returns and bank statements",
+          "POS exports",
+          "payroll and employee roster",
+          "lease and assignments",
+          "equipment and maintenance records"
+        ],
+        "buyer": [
+          "Cash reconciliation",
+          "owner replacement analysis",
+          "lease review",
+          "equipment inspection",
+          "local competition assessment"
+        ],
+        "post_close": [
+          "Daily close controls",
+          "employee scheduling",
+          "supplier files",
+          "maintenance log",
+          "customer retention dashboard"
+        ]
+      }
+    },
+    "business_services": {
+      "decision_changing_evidence": [
+        "Contracts, renewal rights, service-level obligations, and customer concentration.",
+        "Billable utilization, labor turnover, backlog, and contract profitability.",
+        "Wage inflation, insurance exposure, subcontractor dependence, and bidding pipeline."
+      ],
+      "economic_drivers": [
+        "Contract retention",
+        "billable hours",
+        "utilization",
+        "pricing escalators",
+        "labor efficiency",
+        "route density",
+        "customer acquisition",
+        "service quality"
+      ],
+      "normalization_traps": [
+        "Backlog treated as guaranteed revenue",
+        "underaccrued overtime or benefits",
+        "gross margin distorted by subcontractors",
+        "one-time project revenue classified as recurring",
+        "unpriced service obligations"
+      ],
+      "thesis_questions": [
+        "Which services are mission-critical enough to retain through economic cycles?",
+        "Where can density, specialization, or workflow tools create durable margin advantage?",
+        "How much growth can the labor supply and supervision structure support?"
+      ],
+      "known_deal_tests": [
+        "Sample contracts for renewal, termination, pricing, and service obligations.",
+        "Reconcile billed hours to payroll and service delivery.",
+        "Analyze margin by customer, contract, and cohort.",
+        "Stress labor cost inflation and major customer nonrenewal."
+      ],
+      "baseline_kpis": [
+        "contract retention",
+        "gross margin by contract",
+        "billable utilization",
+        "employee turnover",
+        "backlog conversion",
+        "service-level compliance",
+        "customer concentration"
+      ],
+      "value_creation": [
+        {
+          "mechanism": "Route or workforce optimization",
+          "costs": "Scheduling software, dispatch training, and process redesign.",
+          "downside_trigger": "Missed service commitments or increased employee attrition."
+        },
+        {
+          "mechanism": "Contract repricing and service bundling",
+          "costs": "Account management, contract review, and sales enablement.",
+          "downside_trigger": "Nonrenewals erase incremental contribution."
+        }
+      ],
+      "data_room": {
+        "seller": [
+          "Master service agreements",
+          "contract profitability",
+          "workforce roster and wage schedules",
+          "insurance claims",
+          "backlog and bid pipeline"
+        ],
+        "buyer": [
+          "Contract sampling results",
+          "labor utilization bridge",
+          "customer concentration stress test",
+          "service liability review"
+        ],
+        "post_close": [
+          "Contract renewal calendar",
+          "dispatch and utilization dashboard",
+          "service incident log",
+          "pricing governance"
+        ]
+      }
+    },
+    "saas": {
+      "decision_changing_evidence": [
+        "Billing-level ARR and MRR cohorts reconciled to contracts and recognized revenue.",
+        "Gross and net revenue retention, churn, concentration, and product usage.",
+        "Cloud gross margin, security posture, technical debt, intellectual-property ownership, and deferred revenue."
+      ],
+      "economic_drivers": [
+        "New ARR",
+        "expansion",
+        "retention",
+        "gross margin",
+        "customer acquisition efficiency",
+        "sales payback",
+        "R&D productivity",
+        "cash burn"
+      ],
+      "normalization_traps": [
+        "Bookings presented as ARR",
+        "services revenue included in recurring revenue",
+        "uncollected or discounted contracts",
+        "annual prepayments confused with profit",
+        "capitalized development obscuring cash spend",
+        "cohort definition changes"
+      ],
+      "thesis_questions": [
+        "Which customer workflow is sufficiently critical to sustain renewal and pricing power?",
+        "Is growth driven by repeatable distribution or exceptional founder-led selling?",
+        "What technical, security, and support investment is required to scale reliably?"
+      ],
+      "known_deal_tests": [
+        "Rebuild ARR from contracts, invoices, and billing events.",
+        "Calculate retention by consistent customer and revenue cohorts.",
+        "Test CAC, sales payback, cloud costs, and cash burn.",
+        "Review security incidents, data rights, code ownership, and architecture risks with specialists."
+      ],
+      "baseline_kpis": [
+        "ARR",
+        "net revenue retention",
+        "gross revenue retention",
+        "logo churn",
+        "gross margin",
+        "CAC payback",
+        "activation",
+        "uptime",
+        "cash runway"
+      ],
+      "value_creation": [
+        {
+          "mechanism": "Improve onboarding and product activation",
+          "costs": "Product engineering, customer success, analytics, and support.",
+          "downside_trigger": "Activation gains fail to improve retained revenue."
+        },
+        {
+          "mechanism": "Pricing and expansion packaging",
+          "costs": "Billing changes, research, sales training, and migration support.",
+          "downside_trigger": "Churn, support load, or discounting overwhelms expansion."
+        }
+      ],
+      "data_room": {
+        "seller": [
+          "ARR bridge and billing exports",
+          "customer contracts",
+          "cohort retention",
+          "cloud cost detail",
+          "security assessments",
+          "IP assignments",
+          "product roadmap"
+        ],
+        "buyer": [
+          "ARR and revenue reconciliation",
+          "cohort model",
+          "technical diligence",
+          "security risk register",
+          "unit economics model"
+        ],
+        "post_close": [
+          "Product analytics",
+          "security and incident management",
+          "release governance",
+          "customer health",
+          "pricing experiments"
+        ]
+      }
+    },
+    "healthcare": {
+      "decision_changing_evidence": [
+        "Payer contracts, reimbursement mix, denials, and collection performance.",
+        "Provider credentials, capacity, retention, referral concentration, and quality indicators.",
+        "Licensing, privacy, billing compliance, clinical governance, and ownership restrictions reviewed for the jurisdiction."
+      ],
+      "economic_drivers": [
+        "Patient volume",
+        "reimbursement",
+        "provider productivity",
+        "payer mix",
+        "denials",
+        "staffing",
+        "quality outcomes",
+        "facility utilization"
+      ],
+      "normalization_traps": [
+        "Gross charges treated as collectible revenue",
+        "understated bad debt or denials",
+        "provider compensation below market",
+        "unrecognized compliance exposure",
+        "temporary staffing costs omitted",
+        "procedure mix shifts"
+      ],
+      "thesis_questions": [
+        "Which care needs can be served sustainably without compromising clinical quality?",
+        "How dependent is the model on specific providers, payers, or referral sources?",
+        "Which ownership, reimbursement, and clinical constraints could invalidate the strategy?"
+      ],
+      "known_deal_tests": [
+        "Reconcile encounters, claims, collections, and contractual adjustments.",
+        "Analyze provider productivity, capacity, and retention.",
+        "Review payer contract terms and denial patterns.",
+        "Obtain qualified review of clinical quality, billing, privacy, licensing, and transaction structure."
+      ],
+      "baseline_kpis": [
+        "net revenue per encounter",
+        "collection rate",
+        "denial rate",
+        "provider utilization",
+        "patient access time",
+        "quality indicators",
+        "staff turnover",
+        "payer concentration"
+      ],
+      "value_creation": [
+        {
+          "mechanism": "Revenue-cycle improvement",
+          "costs": "Coding audits, billing systems, staff training, and compliance review.",
+          "downside_trigger": "Denials, complaints, or compliance exceptions rise."
+        },
+        {
+          "mechanism": "Capacity and access optimization",
+          "costs": "Clinical staffing, scheduling systems, and patient coordination.",
+          "downside_trigger": "Quality, safety, or continuity-of-care indicators deteriorate."
+        }
+      ],
+      "data_room": {
+        "seller": [
+          "Payer agreements",
+          "deidentified claims and collections",
+          "provider roster and credentials",
+          "quality and compliance records",
+          "licenses",
+          "material incidents"
+        ],
+        "buyer": [
+          "Revenue-cycle reconciliation",
+          "clinical and regulatory specialist findings",
+          "provider continuity analysis",
+          "privacy-controlled diligence log"
+        ],
+        "post_close": [
+          "Clinical governance",
+          "credentialing calendar",
+          "quality and safety dashboard",
+          "revenue-cycle controls",
+          "privacy incident register"
+        ]
+      }
+    },
+    "general_cre": {
+      "decision_changing_evidence": [
+        "Rent roll, leases, tenant credit, collections, and rollover schedule.",
+        "Property operating statements, tax basis, insurance, utilities, and maintenance history.",
+        "Title, survey, zoning, environmental condition, building systems, and financing restrictions."
+      ],
+      "economic_drivers": [
+        "Net operating income",
+        "occupancy",
+        "effective rent",
+        "operating expenses",
+        "tenant improvements",
+        "leasing commissions",
+        "capital expenditure",
+        "financing and exit capitalization"
+      ],
+      "normalization_traps": [
+        "Pro forma NOI presented as in-place NOI",
+        "vacancy or concessions omitted",
+        "recoveries treated as pure margin",
+        "deferred capex",
+        "tax reassessment ignored",
+        "straight-line rent confused with cash rent"
+      ],
+      "thesis_questions": [
+        "Which property economics are driven by controllable operations versus market pricing?",
+        "What tenant, location, and building risks could impair cash flow?",
+        "How much capital is required to stabilize and eventually exit the asset?"
+      ],
+      "known_deal_tests": [
+        "Reconcile rent roll to leases, billings, deposits, and collections.",
+        "Recast NOI with realistic recurring expenses and reserves.",
+        "Review rollover, tenant credit, capital needs, and debt constraints.",
+        "Commission appropriate title, environmental, engineering, and zoning diligence."
+      ],
+      "baseline_kpis": [
+        "in-place NOI",
+        "economic occupancy",
+        "collections",
+        "lease rollover",
+        "expense ratio",
+        "capital backlog",
+        "debt service coverage"
+      ],
+      "value_creation": [
+        {
+          "mechanism": "Lease management and expense recovery",
+          "costs": "Leasing commissions, legal review, tenant improvements, and property management.",
+          "downside_trigger": "Net effective rent falls or downtime exceeds underwriting."
+        },
+        {
+          "mechanism": "Energy and building-system upgrades",
+          "costs": "Engineering, equipment, permits, and downtime.",
+          "downside_trigger": "Verified savings fail to support total project cost."
+        }
+      ],
+      "data_room": {
+        "seller": [
+          "Rent roll",
+          "executed leases",
+          "operating statements",
+          "tax and insurance records",
+          "capital history",
+          "survey and title",
+          "environmental reports"
+        ],
+        "buyer": [
+          "Lease abstraction",
+          "NOI bridge",
+          "capital plan",
+          "property condition review",
+          "financing model"
+        ],
+        "post_close": [
+          "Lease administration",
+          "tenant communications",
+          "property accounting",
+          "work orders",
+          "capital projects",
+          "compliance calendar"
+        ]
+      }
+    },
+    "residential": {
+      "decision_changing_evidence": [
+        "Property condition, comparable closed sales and rental alternatives.",
+        "Taxes, insurance, financing, maintenance, and occupancy or intended-use restrictions.",
+        "Title, permits, renovation scope, neighborhood liquidity, and actual rental demand if investment use is contemplated."
+      ],
+      "economic_drivers": [
+        "Acquisition basis",
+        "market rent or resale value",
+        "renovation cost",
+        "holding cost",
+        "maintenance",
+        "vacancy",
+        "transaction friction",
+        "financing"
+      ],
+      "normalization_traps": [
+        "Listing prices treated as closed comparables",
+        "renovation budgets without contingency",
+        "gross rent treated as cash flow",
+        "unpriced carrying costs",
+        "unpermitted improvements assumed usable"
+      ],
+      "thesis_questions": [
+        "Is the strategy long-term rental, renovation resale, or another permitted use?",
+        "What property-level advantage offsets transaction and carrying costs?",
+        "Which condition or local-market assumptions could invalidate the return?"
+      ],
+      "known_deal_tests": [
+        "Compare recent relevant closed sales with adjustments.",
+        "Inspect structure, major systems, and renovation scope.",
+        "Build monthly holding-cost and downside scenarios.",
+        "Verify title, permits, use restrictions, and financing feasibility."
+      ],
+      "baseline_kpis": [
+        "all-in basis",
+        "net rent",
+        "vacancy",
+        "maintenance cost",
+        "holding cost",
+        "renovation variance",
+        "sale or lease absorption time"
+      ],
+      "value_creation": [
+        {
+          "mechanism": "Targeted renovation and energy improvements",
+          "costs": "Contractors, materials, permits, contingency, and carrying time.",
+          "downside_trigger": "Expected incremental value falls below remaining project cost."
+        },
+        {
+          "mechanism": "Rental operations improvement",
+          "costs": "Property management, turnover, leasing, and repairs.",
+          "downside_trigger": "Vacancy or maintenance increases consume projected rent gains."
+        }
+      ],
+      "data_room": {
+        "seller": [
+          "Title and survey",
+          "condition disclosures",
+          "tax and insurance history",
+          "permits",
+          "leases if occupied",
+          "utility history"
+        ],
+        "buyer": [
+          "Comparable-sales analysis",
+          "inspection reports",
+          "renovation budget",
+          "holding-cost model",
+          "use verification"
+        ],
+        "post_close": [
+          "Renovation schedule",
+          "contractor agreements",
+          "warranties",
+          "maintenance records",
+          "rental ledger or disposition file"
+        ]
+      }
+    },
+    "multifamily": {
+      "decision_changing_evidence": [
+        "Unit-level rent roll, concessions, collections, and delinquency.",
+        "Lease expirations, turnover, renovation premiums, and actual comparable units.",
+        "Utilities, payroll, property taxes, insurance, deferred maintenance, and applicable tenant protections."
+      ],
+      "economic_drivers": [
+        "Effective rent",
+        "physical and economic occupancy",
+        "turnover",
+        "other income",
+        "payroll",
+        "utilities",
+        "repairs",
+        "capital improvements"
+      ],
+      "normalization_traps": [
+        "Asking rent substituted for achieved rent",
+        "renovation premiums applied to all units immediately",
+        "bad debt excluded",
+        "turnover and concessions omitted",
+        "tax reassessment or utility leakage ignored"
+      ],
+      "thesis_questions": [
+        "Which unit segments have documented, achievable demand for improvements?",
+        "What is the realistic turnover pace and disruption cost?",
+        "Which operating efficiencies are achievable without relying on prohibited tenant practices?"
+      ],
+      "known_deal_tests": [
+        "Tie unit rent roll to executed leases and collections.",
+        "Analyze renewal, turnover, concessions, and bad debt by cohort.",
+        "Validate renovation premiums with completed comparable units.",
+        "Review building condition, utility systems, and applicable tenancy restrictions."
+      ],
+      "baseline_kpis": [
+        "economic occupancy",
+        "effective rent per unit",
+        "delinquency",
+        "turnover",
+        "renewal rate",
+        "NOI per unit",
+        "repair cost per unit",
+        "renovation ROI"
+      ],
+      "value_creation": [
+        {
+          "mechanism": "Unit upgrades at natural turnover",
+          "costs": "Materials, labor, vacancy days, leasing, and financing.",
+          "downside_trigger": "Achieved rent premiums fail to recover renovation and downtime costs."
+        },
+        {
+          "mechanism": "Utility and maintenance efficiency",
+          "costs": "Metering, equipment, vendor changes, and resident communication.",
+          "downside_trigger": "Operating savings are offset by failures, complaints, or capital overruns."
+        }
+      ],
+      "data_room": {
+        "seller": [
+          "Unit-level rent roll",
+          "leases and concessions",
+          "delinquency reports",
+          "turnover and renovation history",
+          "utility bills",
+          "work orders"
+        ],
+        "buyer": [
+          "Lease audit",
+          "rent comparables",
+          "renovation cohort model",
+          "tenant-law specialist review",
+          "capital assessment"
+        ],
+        "post_close": [
+          "Resident ledger",
+          "renewal calendar",
+          "turnover tracker",
+          "work-order system",
+          "renovation budget",
+          "resident communications"
+        ]
+      }
+    },
+    "office": {
+      "decision_changing_evidence": [
+        "Tenant lease expirations, options, credit, concessions, and actual utilization.",
+        "Submarket leasing velocity, competing availability, tenant improvement requirements, and broker evidence.",
+        "Building systems, amenities, operating recoveries, and capital needed for repositioning."
+      ],
+      "economic_drivers": [
+        "Leased and occupied area",
+        "net effective rent",
+        "tenant retention",
+        "leasing downtime",
+        "tenant improvements",
+        "commissions",
+        "recoveries",
+        "building operating cost"
+      ],
+      "normalization_traps": [
+        "Face rent mistaken for net effective rent",
+        "signed leases treated as occupied cash flow",
+        "free rent omitted",
+        "rollover capital understated",
+        "shadow vacancy ignored",
+        "speculative conversion value"
+      ],
+      "thesis_questions": [
+        "Which tenant segments still require this specific location and building format?",
+        "What lease-up costs and downtime are necessary to compete?",
+        "What alternative use is legally and economically plausible if office demand weakens?"
+      ],
+      "known_deal_tests": [
+        "Abstract leases including options, concessions, and expense recoveries.",
+        "Model tenant-by-tenant rollover and downtime.",
+        "Compare effective leasing economics with current submarket evidence.",
+        "Review building systems and alternative-use feasibility with specialists."
+      ],
+      "baseline_kpis": [
+        "leased occupancy",
+        "physical occupancy",
+        "weighted lease term",
+        "net effective rent",
+        "tenant retention",
+        "leasing cost per area",
+        "NOI",
+        "capital backlog"
+      ],
+      "value_creation": [
+        {
+          "mechanism": "Targeted leasing and amenity repositioning",
+          "costs": "Tenant improvements, commissions, marketing, and amenity capital.",
+          "downside_trigger": "Net effective rent or absorption fails to justify leasing spend."
+        },
+        {
+          "mechanism": "Operating efficiency and tenant experience",
+          "costs": "Building controls, services, and management.",
+          "downside_trigger": "Tenant retention does not improve or service costs outrun recoveries."
+        }
+      ],
+      "data_room": {
+        "seller": [
+          "All leases and amendments",
+          "tenant credit",
+          "rent and concession schedules",
+          "operating recoveries",
+          "leasing pipeline",
+          "building systems reports"
+        ],
+        "buyer": [
+          "Tenant rollover model",
+          "effective rent bridge",
+          "leasing cost forecast",
+          "alternative-use feasibility"
+        ],
+        "post_close": [
+          "Lease rollover calendar",
+          "tenant relations",
+          "leasing pipeline",
+          "capital authorization",
+          "building performance"
+        ]
+      }
+    },
+    "retail": {
+      "decision_changing_evidence": [
+        "Tenant sales where available, occupancy cost, co-tenancy clauses, and anchor exposure.",
+        "Trade-area demographics, access, foot traffic, competitive supply, and tenant mix.",
+        "Percentage rent, expense recoveries, exclusivity clauses, and redevelopment restrictions."
+      ],
+      "economic_drivers": [
+        "Tenant sales productivity",
+        "traffic",
+        "occupancy",
+        "base rent",
+        "percentage rent",
+        "tenant mix",
+        "leasing spreads",
+        "recoveries"
+      ],
+      "normalization_traps": [
+        "Anchor occupancy treated as equivalent to economic health",
+        "temporary tenants masking vacancy",
+        "unverified foot traffic",
+        "co-tenancy penalties omitted",
+        "tenant sales reported on inconsistent bases"
+      ],
+      "thesis_questions": [
+        "What recurring consumer need supports this trade area and tenant mix?",
+        "Which anchor or tenant dependencies could cause correlated vacancies?",
+        "Can merchandising, access, or redevelopment improve sales productivity economically?"
+      ],
+      "known_deal_tests": [
+        "Review co-tenancy, exclusivity, kick-out, and percentage-rent provisions.",
+        "Compare tenant sales and occupancy cost where documented.",
+        "Analyze trade-area competition and access.",
+        "Stress anchor loss, re-leasing time, and tenant improvement requirements."
+      ],
+      "baseline_kpis": [
+        "economic occupancy",
+        "tenant sales per area",
+        "occupancy cost ratio",
+        "foot traffic",
+        "leasing spreads",
+        "anchor concentration",
+        "NOI",
+        "collections"
+      ],
+      "value_creation": [
+        {
+          "mechanism": "Tenant mix and merchandising optimization",
+          "costs": "Broker fees, fit-out allowances, downtime, and marketing.",
+          "downside_trigger": "Traffic or sales productivity fails to improve after leasing investment."
+        },
+        {
+          "mechanism": "Access and common-area upgrades",
+          "costs": "Site works, permits, maintenance, and construction disruption.",
+          "downside_trigger": "Tenant performance or net rent does not support capital spending."
+        }
+      ],
+      "data_room": {
+        "seller": [
+          "Tenant leases",
+          "sales reports if permitted",
+          "co-tenancy schedules",
+          "traffic studies",
+          "site plans",
+          "CAM reconciliations"
+        ],
+        "buyer": [
+          "Co-tenancy exposure map",
+          "trade-area analysis",
+          "tenant mix model",
+          "leasing and capital budget"
+        ],
+        "post_close": [
+          "Tenant sales tracking",
+          "merchant communications",
+          "leasing pipeline",
+          "CAM controls",
+          "site maintenance"
+        ]
+      }
+    },
+    "industrial_logistics": {
+      "decision_changing_evidence": [
+        "Clear height, loading, power, floor capacity, yard access, and truck circulation.",
+        "Tenant credit, lease structure, location relative to freight corridors and customers.",
+        "Environmental history, zoning, site constraints, and expansion feasibility."
+      ],
+      "economic_drivers": [
+        "Functional building utility",
+        "location",
+        "occupancy",
+        "rent per area",
+        "tenant retention",
+        "operating recoveries",
+        "capital upgrades",
+        "land availability"
+      ],
+      "normalization_traps": [
+        "Obsolete facilities compared with modern logistics stock",
+        "gross area confused with usable area",
+        "unfunded power or loading upgrades",
+        "environmental remediation omitted",
+        "speculative last-mile rent premiums"
+      ],
+      "thesis_questions": [
+        "Which logistics or manufacturing users need the asset's specific physical capabilities?",
+        "What functional obsolescence risk emerges as tenant requirements evolve?",
+        "Can location and infrastructure advantages justify the full capital basis?"
+      ],
+      "known_deal_tests": [
+        "Verify physical specifications through plans and inspections.",
+        "Review zoning, environmental history, access, and utility capacity.",
+        "Analyze lease rollover against comparable functional buildings.",
+        "Stress tenant loss and required retrofit capital."
+      ],
+      "baseline_kpis": [
+        "economic occupancy",
+        "rent per usable area",
+        "tenant concentration",
+        "lease term",
+        "loading utilization",
+        "maintenance cost",
+        "NOI",
+        "capital backlog"
+      ],
+      "value_creation": [
+        {
+          "mechanism": "Functional upgrades for target tenants",
+          "costs": "Dock equipment, power, paving, permits, and downtime.",
+          "downside_trigger": "Tenant demand or achieved rent does not justify retrofit capital."
+        },
+        {
+          "mechanism": "Yard, storage, and lease optimization",
+          "costs": "Site works, security, legal review, and management.",
+          "downside_trigger": "Access constraints, safety incidents, or compliance issues increase."
+        }
+      ],
+      "data_room": {
+        "seller": [
+          "Building specifications",
+          "site and utility plans",
+          "leases",
+          "environmental reports",
+          "maintenance history",
+          "access easements"
+        ],
+        "buyer": [
+          "Functional suitability matrix",
+          "environmental and engineering diligence",
+          "retrofit cost estimates",
+          "tenant demand analysis"
+        ],
+        "post_close": [
+          "Facility maintenance",
+          "safety inspections",
+          "tenant requirements",
+          "capital projects",
+          "utility performance"
+        ]
+      }
+    },
+    "hospitality": {
+      "decision_changing_evidence": [
+        "Daily room-night and revenue data, segment mix, seasonality, and channel costs.",
+        "Labor schedules, departmental profitability, brand or management agreements.",
+        "Property condition, renovation obligations, reputation, and local demand generators."
+      ],
+      "economic_drivers": [
+        "Occupancy",
+        "average daily rate",
+        "revenue per available room",
+        "distribution cost",
+        "labor productivity",
+        "food and beverage margin",
+        "seasonality",
+        "capital reserve"
+      ],
+      "normalization_traps": [
+        "Peak-season results annualized",
+        "gross booking revenue before channel fees",
+        "brand-mandated capital omitted",
+        "labor understaffing treated as sustainable savings",
+        "one-time event demand extrapolated"
+      ],
+      "thesis_questions": [
+        "Which demand segments support durable occupancy across seasons?",
+        "What operating advantage can improve guest economics without damaging service?",
+        "How do brand, management, and renovation commitments constrain the investment?"
+      ],
+      "known_deal_tests": [
+        "Reconcile property management system data to revenue and deposits.",
+        "Analyze daily occupancy, ADR, and RevPAR by segment and season.",
+        "Review franchise or management agreements and required improvements.",
+        "Inspect property condition and stress labor, distribution, and demand shocks."
+      ],
+      "baseline_kpis": [
+        "occupancy",
+        "ADR",
+        "RevPAR",
+        "gross operating profit",
+        "labor cost per occupied room",
+        "channel acquisition cost",
+        "guest satisfaction",
+        "capital reserve"
+      ],
+      "value_creation": [
+        {
+          "mechanism": "Revenue management and channel mix",
+          "costs": "Systems, analyst time, training, and distribution contracts.",
+          "downside_trigger": "Rate gains reduce total contribution or guest retention."
+        },
+        {
+          "mechanism": "Service and labor productivity redesign",
+          "costs": "Training, scheduling tools, equipment, and transition staffing.",
+          "downside_trigger": "Guest complaints, employee turnover, or service failures increase."
+        }
+      ],
+      "data_room": {
+        "seller": [
+          "Daily PMS exports",
+          "departmental P&Ls",
+          "brand and management contracts",
+          "guest reviews",
+          "capital plans",
+          "labor records"
+        ],
+        "buyer": [
+          "Revenue segmentation",
+          "seasonality analysis",
+          "brand obligations review",
+          "property condition assessment",
+          "labor model"
+        ],
+        "post_close": [
+          "Daily revenue reports",
+          "guest experience",
+          "labor scheduling",
+          "brand compliance",
+          "maintenance and renovation tracking"
+        ]
+      }
+    },
+    "self_storage": {
+      "decision_changing_evidence": [
+        "Unit-level occupancy, street versus achieved rents, discounts, and delinquency.",
+        "Move-in and move-out cohorts, local supply pipeline, customer acquisition channels.",
+        "Property security, access systems, taxes, insurance, and expansion potential."
+      ],
+      "economic_drivers": [
+        "Occupied units",
+        "achieved rent",
+        "rate increases",
+        "tenant churn",
+        "customer acquisition",
+        "ancillary revenue",
+        "payroll efficiency",
+        "local supply"
+      ],
+      "normalization_traps": [
+        "Street rents treated as achieved rents",
+        "promotional discounts ignored",
+        "physical occupancy substituted for economic occupancy",
+        "rate increases modeled without move-out response",
+        "new competing supply omitted"
+      ],
+      "thesis_questions": [
+        "What local demand drivers support sustained storage use?",
+        "How sensitive are tenants to rate changes and competing supply?",
+        "Can remote management or expansion improve returns without harming service and security?"
+      ],
+      "known_deal_tests": [
+        "Reconcile unit ledger, billing, promotions, and collections.",
+        "Analyze churn and achieved rent by move-in cohort.",
+        "Map current and planned competing supply.",
+        "Inspect security, access, physical condition, and expansion constraints."
+      ],
+      "baseline_kpis": [
+        "physical occupancy",
+        "economic occupancy",
+        "achieved rent per unit",
+        "move-in rate",
+        "move-out rate",
+        "delinquency",
+        "customer acquisition cost",
+        "NOI"
+      ],
+      "value_creation": [
+        {
+          "mechanism": "Segmented revenue management",
+          "costs": "Pricing software, customer communications, and analytics.",
+          "downside_trigger": "Move-outs and concessions erase rate gains."
+        },
+        {
+          "mechanism": "Remote operations and ancillary services",
+          "costs": "Access technology, security, maintenance, and support.",
+          "downside_trigger": "Security incidents or customer service failures rise."
+        }
+      ],
+      "data_room": {
+        "seller": [
+          "Unit-level tenant ledger",
+          "rate and discount history",
+          "move-in and move-out data",
+          "marketing spend",
+          "security incidents",
+          "site plans"
+        ],
+        "buyer": [
+          "Cohort pricing model",
+          "supply pipeline assessment",
+          "security inspection",
+          "expansion feasibility"
+        ],
+        "post_close": [
+          "Revenue management",
+          "tenant communications",
+          "access controls",
+          "delinquency workflow",
+          "security and maintenance logs"
+        ]
+      }
+    },
+    "mixed_use": {
+      "decision_changing_evidence": [
+        "Separate residential, retail, office, or other component cash flows and leases.",
+        "Shared systems, common-area allocations, access rights, and conflicting use requirements.",
+        "Ownership structure, condominium documents, easements, zoning, and component-level capital needs."
+      ],
+      "economic_drivers": [
+        "Component-specific NOI",
+        "tenant mix",
+        "shared operating costs",
+        "cross-use foot traffic",
+        "leasing flexibility",
+        "capital allocation",
+        "management complexity"
+      ],
+      "normalization_traps": [
+        "One blended cap rate hiding component risk",
+        "shared costs allocated arbitrarily",
+        "cross-use synergies double-counted",
+        "incompatible operating hours or loading needs",
+        "component-specific restrictions overlooked"
+      ],
+      "thesis_questions": [
+        "Which uses genuinely reinforce one another rather than merely coexist?",
+        "How should shared costs and capital be allocated between components?",
+        "What legal and physical constraints prevent independent repositioning of each use?"
+      ],
+      "known_deal_tests": [
+        "Underwrite each use separately before consolidating.",
+        "Audit shared cost allocations and recoverability.",
+        "Review access, easements, governing documents, and zoning.",
+        "Stress a downturn or vacancy in one component without assuming offsetting benefits elsewhere."
+      ],
+      "baseline_kpis": [
+        "NOI by component",
+        "occupancy by use",
+        "shared cost recovery",
+        "leasing spreads",
+        "capital allocation",
+        "tenant complaints",
+        "consolidated cash flow"
+      ],
+      "value_creation": [
+        {
+          "mechanism": "Coordinate tenant mix and shared amenities",
+          "costs": "Programming, marketing, tenant improvements, and management.",
+          "downside_trigger": "Component-level cash flow declines despite improved aggregate activity."
+        },
+        {
+          "mechanism": "Optimize shared building systems and expense allocation",
+          "costs": "Engineering, metering, accounting, and legal review.",
+          "downside_trigger": "Disputes or unrecoverable costs outweigh savings."
+        }
+      ],
+      "data_room": {
+        "seller": [
+          "Component rent rolls",
+          "all leases",
+          "shared cost schedules",
+          "governing documents",
+          "easements",
+          "building systems",
+          "zoning records"
+        ],
+        "buyer": [
+          "Component underwriting",
+          "allocation reconciliation",
+          "cross-use risk map",
+          "governing-document review"
+        ],
+        "post_close": [
+          "Component dashboards",
+          "shared services governance",
+          "tenant coordination",
+          "cost allocation ledger",
+          "capital prioritization"
+        ]
+      }
+    },
+    "land_development": {
+      "decision_changing_evidence": [
+        "Title, boundaries, access, easements, utilities, environmental and geotechnical conditions.",
+        "Permitted or realistically approvable use, entitlement pathway, infrastructure obligations, and community constraints.",
+        "Comparable land transactions, development costs, absorption, financing, and exit demand."
+      ],
+      "economic_drivers": [
+        "Entitlement probability",
+        "developable yield",
+        "land basis",
+        "sitework",
+        "construction cost",
+        "financing carry",
+        "absorption",
+        "exit pricing",
+        "schedule"
+      ],
+      "normalization_traps": [
+        "Gross acreage treated as developable acreage",
+        "hypothetical entitlements valued as approved",
+        "infrastructure and impact costs omitted",
+        "construction escalation ignored",
+        "absorption assumed immediate",
+        "land carry excluded"
+      ],
+      "thesis_questions": [
+        "What specific development right or land-use change creates the investment advantage?",
+        "Which entitlement, utility, environmental, or infrastructure dependency controls feasibility?",
+        "What alternative exit remains viable if approvals or market demand are delayed?"
+      ],
+      "known_deal_tests": [
+        "Verify title, survey, access, zoning, and approval status with qualified parties.",
+        "Commission appropriate geotechnical, environmental, and utility feasibility work.",
+        "Build residual land value and development cash-flow scenarios.",
+        "Stress approval delay, construction cost, absorption, and financing availability."
+      ],
+      "baseline_kpis": [
+        "developable yield",
+        "entitlement milestone status",
+        "estimated total project cost",
+        "cost-to-complete",
+        "schedule variance",
+        "preleasing or presales",
+        "absorption",
+        "cash carry",
+        "contingency usage"
+      ],
+      "value_creation": [
+        {
+          "mechanism": "Entitlement and infrastructure de-risking",
+          "costs": "Planning, legal, engineering, studies, applications, and holding costs.",
+          "downside_trigger": "Approval prospects deteriorate or required infrastructure destroys residual value."
+        },
+        {
+          "mechanism": "Phased development or parcel disposition",
+          "costs": "Subdivision, sitework, financing, marketing, and carrying costs.",
+          "downside_trigger": "Absorption, pricing, or cost-to-complete no longer supports the next phase."
+        }
+      ],
+      "data_room": {
+        "seller": [
+          "Title and survey",
+          "parcel records",
+          "easements",
+          "zoning and entitlement correspondence",
+          "environmental and geotechnical reports",
+          "utility availability",
+          "site plans"
+        ],
+        "buyer": [
+          "Entitlement matrix",
+          "development yield analysis",
+          "residual land model",
+          "infrastructure estimates",
+          "schedule and downside cases"
+        ],
+        "post_close": [
+          "Entitlement tracker",
+          "consultant contracts",
+          "design versions",
+          "budget and commitments",
+          "permit register",
+          "construction and sales milestones"
+        ]
+      }
+    }
+  },
+  "implementation_notes": {
+    "entrypoint_pattern": "{family}/{category}/SKILL.md",
+    "orchestrators": [
+      "thesis_builder/SKILL.md",
+      "known_deal/SKILL.md",
+      "value_creation/SKILL.md"
+    ],
+    "overlay_files": [
+      "SKILL.md",
+      "references/method.md",
+      "templates/worksheet.json",
+      "schemas/result.schema.json",
+      "tests/cases.json"
+    ],
+    "schema_required_fields": [
+      "family",
+      "category",
+      "original_user_wording",
+      "inputs",
+      "evidence_register",
+      "unknowns",
+      "conflicts",
+      "assumptions",
+      "outputs",
+      "decision",
+      "data_room_handoff",
+      "review_checkpoints"
+    ],
+    "development_case_types": [
+      "complete_evidence",
+      "missing_material_evidence",
+      "conflicting_sources",
+      "adverse_downside",
+      "optional_inputs_absent",
+      "cross_model_disagreement",
+      "unauthorized_access",
+      "category_specific_normalization"
+    ],
+    "source_policy": "Reference primary documents and qualified specialists where appropriate. Record access and retrieval status. This design does not establish that any source was consulted.",
+    "verification_policy": "Validate generated file membership, JSON schemas, references, test fixtures, archive extraction, per-file hashes, and manifest consistency locally. These tests do not establish live investment or model performance."
+  }
+}

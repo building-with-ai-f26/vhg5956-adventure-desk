@@ -1,0 +1,33 @@
+{
+  "qwen32": {
+    "repo": "Qwen/Qwen3-32B-GGUF",
+    "revision": "938a7432affaec9157f883a87164e2646ae17555",
+    "filename": "Qwen3-32B-Q4_K_M.gguf",
+    "folder": "native-32b",
+    "bytes": 19762149024,
+    "sha256": "efd971561896866f0e910cce52761ca77b1b138090c7f15fe284676d57d1f689",
+    "independence_key": "Qwen/Qwen3-32B",
+    "parameters_billions": 32
+  },
+  "qwen14": {
+    "repo": "Qwen/Qwen3-14B-GGUF",
+    "revision": "530227a7d994db8eca5ab5ced2fb692b614357fd",
+    "filename": "Qwen3-14B-Q4_K_M.gguf",
+    "folder": "native-models/qwen14",
+    "bytes": 9001752960,
+    "sha256": "500a8806e85ee9c83f3ae08420295592451379b4f8cf2d0f41c15dffeb6b81f0",
+    "independence_key": "Qwen/Qwen3-14B",
+    "parameters_billions": 14
+  },
+  "deepseek14": {
+    "repo": "bartowski/DeepSeek-R1-Distill-Qwen-14B-GGUF",
+    "revision": "9f5d77d401799416e0702290a691038b44012e0c",
+    "filename": "DeepSeek-R1-Distill-Qwen-14B-Q4_K_M.gguf",
+    "folder": "native-models/deepseek14",
+    "bytes": 8988110240,
+    "sha256": "0b319bd0572f2730bfe11cc751defe82045fad5085b4e60591ac2cd2d9633181",
+    "independence_key": "deepseek-ai/DeepSeek-R1-Distill-Qwen-14B",
+    "parameters_billions": 14,
+    "source_form": "quantizer_release; exact upstream float revision not independently verified"
+  }
+}

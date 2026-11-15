@@ -1,0 +1,439 @@
+{
+  "version": 1,
+  "families": {
+    "thesis_builder": "geez-thesis-builder",
+    "known_deal": "geez-known-deal-evaluator",
+    "value_creation": "geez-post-acquisition-growth-planner"
+  },
+  "categories": [
+    "pe_platform_addon",
+    "search_fund",
+    "small_business",
+    "business_services",
+    "saas",
+    "healthcare",
+    "general_cre",
+    "residential",
+    "multifamily",
+    "office",
+    "retail",
+    "industrial_logistics",
+    "hospitality",
+    "self_storage",
+    "mixed_use",
+    "land_development"
+  ],
+  "modules": [
+    {
+      "id": "geez-thesis-builder",
+      "family": "thesis_builder",
+      "category": null,
+      "title": "Develop an investment thesis",
+      "entrypoint": "skills/geez-thesis-builder/SKILL.md",
+      "method": "skills/geez-thesis-builder/references/method.md"
+    },
+    {
+      "id": "geez-thesis-builder-pe-platform-addon",
+      "family": "thesis_builder",
+      "category": "pe_platform_addon",
+      "title": "Develop an investment thesis — Pe Platform Addon",
+      "entrypoint": "skills/geez-thesis-builder-pe-platform-addon/SKILL.md",
+      "method": "skills/geez-thesis-builder-pe-platform-addon/references/method.md"
+    },
+    {
+      "id": "geez-thesis-builder-search-fund",
+      "family": "thesis_builder",
+      "category": "search_fund",
+      "title": "Develop an investment thesis — Search Fund",
+      "entrypoint": "skills/geez-thesis-builder-search-fund/SKILL.md",
+      "method": "skills/geez-thesis-builder-search-fund/references/method.md"
+    },
+    {
+      "id": "geez-thesis-builder-small-business",
+      "family": "thesis_builder",
+      "category": "small_business",
+      "title": "Develop an investment thesis — Small Business",
+      "entrypoint": "skills/geez-thesis-builder-small-business/SKILL.md",
+      "method": "skills/geez-thesis-builder-small-business/references/method.md"
+    },
+    {
+      "id": "geez-thesis-builder-business-services",
+      "family": "thesis_builder",
+      "category": "business_services",
+      "title": "Develop an investment thesis — Business Services",
+      "entrypoint": "skills/geez-thesis-builder-business-services/SKILL.md",
+      "method": "skills/geez-thesis-builder-business-services/references/method.md"
+    },
+    {
+      "id": "geez-thesis-builder-saas",
+      "family": "thesis_builder",
+      "category": "saas",
+      "title": "Develop an investment thesis — Saas",
+      "entrypoint": "skills/geez-thesis-builder-saas/SKILL.md",
+      "method": "skills/geez-thesis-builder-saas/references/method.md"
+    },
+    {
+      "id": "geez-thesis-builder-healthcare",
+      "family": "thesis_builder",
+      "category": "healthcare",
+      "title": "Develop an investment thesis — Healthcare",
+      "entrypoint": "skills/geez-thesis-builder-healthcare/SKILL.md",
+      "method": "skills/geez-thesis-builder-healthcare/references/method.md"
+    },
+    {
+      "id": "geez-thesis-builder-general-cre",
+      "family": "thesis_builder",
+      "category": "general_cre",
+      "title": "Develop an investment thesis — General Cre",
+      "entrypoint": "skills/geez-thesis-builder-general-cre/SKILL.md",
+      "method": "skills/geez-thesis-builder-general-cre/references/method.md"
+    },
+    {
+      "id": "geez-thesis-builder-residential",
+      "family": "thesis_builder",
+      "category": "residential",
+      "title": "Develop an investment thesis — Residential",
+      "entrypoint": "skills/geez-thesis-builder-residential/SKILL.md",
+      "method": "skills/geez-thesis-builder-residential/references/method.md"
+    },
+    {
+      "id": "geez-thesis-builder-multifamily",
+      "family": "thesis_builder",
+      "category": "multifamily",
+      "title": "Develop an investment thesis — Multifamily",
+      "entrypoint": "skills/geez-thesis-builder-multifamily/SKILL.md",
+      "method": "skills/geez-thesis-builder-multifamily/references/method.md"
+    },
+    {
+      "id": "geez-thesis-builder-office",
+      "family": "thesis_builder",
+      "category": "office",
+      "title": "Develop an investment thesis — Office",
+      "entrypoint": "skills/geez-thesis-builder-office/SKILL.md",
+      "method": "skills/geez-thesis-builder-office/references/method.md"
+    },
+    {
+      "id": "geez-thesis-builder-retail",
+      "family": "thesis_builder",
+      "category": "retail",
+      "title": "Develop an investment thesis — Retail",
+      "entrypoint": "skills/geez-thesis-builder-retail/SKILL.md",
+      "method": "skills/geez-thesis-builder-retail/references/method.md"
+    },
+    {
+      "id": "geez-thesis-builder-industrial-logistics",
+      "family": "thesis_builder",
+      "category": "industrial_logistics",
+      "title": "Develop an investment thesis — Industrial Logistics",
+      "entrypoint": "skills/geez-thesis-builder-industrial-logistics/SKILL.md",
+      "method": "skills/geez-thesis-builder-industrial-logistics/references/method.md"
+    },
+    {
+      "id": "geez-thesis-builder-hospitality",
+      "family": "thesis_builder",
+      "category": "hospitality",
+      "title": "Develop an investment thesis — Hospitality",
+      "entrypoint": "skills/geez-thesis-builder-hospitality/SKILL.md",
+      "method": "skills/geez-thesis-builder-hospitality/references/method.md"
+    },
+    {
+      "id": "geez-thesis-builder-self-storage",
+      "family": "thesis_builder",
+      "category": "self_storage",
+      "title": "Develop an investment thesis — Self Storage",
+      "entrypoint": "skills/geez-thesis-builder-self-storage/SKILL.md",
+      "method": "skills/geez-thesis-builder-self-storage/references/method.md"
+    },
+    {
+      "id": "geez-thesis-builder-mixed-use",
+      "family": "thesis_builder",
+      "category": "mixed_use",
+      "title": "Develop an investment thesis — Mixed Use",
+      "entrypoint": "skills/geez-thesis-builder-mixed-use/SKILL.md",
+      "method": "skills/geez-thesis-builder-mixed-use/references/method.md"
+    },
+    {
+      "id": "geez-thesis-builder-land-development",
+      "family": "thesis_builder",
+      "category": "land_development",
+      "title": "Develop an investment thesis — Land Development",
+      "entrypoint": "skills/geez-thesis-builder-land-development/SKILL.md",
+      "method": "skills/geez-thesis-builder-land-development/references/method.md"
+    },
+    {
+      "id": "geez-known-deal-evaluator",
+      "family": "known_deal",
+      "category": null,
+      "title": "Evaluate a known opportunity",
+      "entrypoint": "skills/geez-known-deal-evaluator/SKILL.md",
+      "method": "skills/geez-known-deal-evaluator/references/method.md"
+    },
+    {
+      "id": "geez-known-deal-evaluator-pe-platform-addon",
+      "family": "known_deal",
+      "category": "pe_platform_addon",
+      "title": "Evaluate a known opportunity — Pe Platform Addon",
+      "entrypoint": "skills/geez-known-deal-evaluator-pe-platform-addon/SKILL.md",
+      "method": "skills/geez-known-deal-evaluator-pe-platform-addon/references/method.md"
+    },
+    {
+      "id": "geez-known-deal-evaluator-search-fund",
+      "family": "known_deal",
+      "category": "search_fund",
+      "title": "Evaluate a known opportunity — Search Fund",
+      "entrypoint": "skills/geez-known-deal-evaluator-search-fund/SKILL.md",
+      "method": "skills/geez-known-deal-evaluator-search-fund/references/method.md"
+    },
+    {
+      "id": "geez-known-deal-evaluator-small-business",
+      "family": "known_deal",
+      "category": "small_business",
+      "title": "Evaluate a known opportunity — Small Business",
+      "entrypoint": "skills/geez-known-deal-evaluator-small-business/SKILL.md",
+      "method": "skills/geez-known-deal-evaluator-small-business/references/method.md"
+    },
+    {
+      "id": "geez-known-deal-evaluator-business-services",
+      "family": "known_deal",
+      "category": "business_services",
+      "title": "Evaluate a known opportunity — Business Services",
+      "entrypoint": "skills/geez-known-deal-evaluator-business-services/SKILL.md",
+      "method": "skills/geez-known-deal-evaluator-business-services/references/method.md"
+    },
+    {
+      "id": "geez-known-deal-evaluator-saas",
+      "family": "known_deal",
+      "category": "saas",
+      "title": "Evaluate a known opportunity — Saas",
+      "entrypoint": "skills/geez-known-deal-evaluator-saas/SKILL.md",
+      "method": "skills/geez-known-deal-evaluator-saas/references/method.md"
+    },
+    {
+      "id": "geez-known-deal-evaluator-healthcare",
+      "family": "known_deal",
+      "category": "healthcare",
+      "title": "Evaluate a known opportunity — Healthcare",
+      "entrypoint": "skills/geez-known-deal-evaluator-healthcare/SKILL.md",
+      "method": "skills/geez-known-deal-evaluator-healthcare/references/method.md"
+    },
+    {
+      "id": "geez-known-deal-evaluator-general-cre",
+      "family": "known_deal",
+      "category": "general_cre",
+      "title": "Evaluate a known opportunity — General Cre",
+      "entrypoint": "skills/geez-known-deal-evaluator-general-cre/SKILL.md",
+      "method": "skills/geez-known-deal-evaluator-general-cre/references/method.md"
+    },
+    {
+      "id": "geez-known-deal-evaluator-residential",
+      "family": "known_deal",
+      "category": "residential",
+      "title": "Evaluate a known opportunity — Residential",
+      "entrypoint": "skills/geez-known-deal-evaluator-residential/SKILL.md",
+      "method": "skills/geez-known-deal-evaluator-residential/references/method.md"
+    },
+    {
+      "id": "geez-known-deal-evaluator-multifamily",
+      "family": "known_deal",
+      "category": "multifamily",
+      "title": "Evaluate a known opportunity — Multifamily",
+      "entrypoint": "skills/geez-known-deal-evaluator-multifamily/SKILL.md",
+      "method": "skills/geez-known-deal-evaluator-multifamily/references/method.md"
+    },
+    {
+      "id": "geez-known-deal-evaluator-office",
+      "family": "known_deal",
+      "category": "office",
+      "title": "Evaluate a known opportunity — Office",
+      "entrypoint": "skills/geez-known-deal-evaluator-office/SKILL.md",
+      "method": "skills/geez-known-deal-evaluator-office/references/method.md"
+    },
+    {
+      "id": "geez-known-deal-evaluator-retail",
+      "family": "known_deal",
+      "category": "retail",
+      "title": "Evaluate a known opportunity — Retail",
+      "entrypoint": "skills/geez-known-deal-evaluator-retail/SKILL.md",
+      "method": "skills/geez-known-deal-evaluator-retail/references/method.md"
+    },
+    {
+      "id": "geez-known-deal-evaluator-industrial-logistics",
+      "family": "known_deal",
+      "category": "industrial_logistics",
+      "title": "Evaluate a known opportunity — Industrial Logistics",
+      "entrypoint": "skills/geez-known-deal-evaluator-industrial-logistics/SKILL.md",
+      "method": "skills/geez-known-deal-evaluator-industrial-logistics/references/method.md"
+    },
+    {
+      "id": "geez-known-deal-evaluator-hospitality",
+      "family": "known_deal",
+      "category": "hospitality",
+      "title": "Evaluate a known opportunity — Hospitality",
+      "entrypoint": "skills/geez-known-deal-evaluator-hospitality/SKILL.md",
+      "method": "skills/geez-known-deal-evaluator-hospitality/references/method.md"
+    },
+    {
+      "id": "geez-known-deal-evaluator-self-storage",
+      "family": "known_deal",
+      "category": "self_storage",
+      "title": "Evaluate a known opportunity — Self Storage",
+      "entrypoint": "skills/geez-known-deal-evaluator-self-storage/SKILL.md",
+      "method": "skills/geez-known-deal-evaluator-self-storage/references/method.md"
+    },
+    {
+      "id": "geez-known-deal-evaluator-mixed-use",
+      "family": "known_deal",
+      "category": "mixed_use",
+      "title": "Evaluate a known opportunity — Mixed Use",
+      "entrypoint": "skills/geez-known-deal-evaluator-mixed-use/SKILL.md",
+      "method": "skills/geez-known-deal-evaluator-mixed-use/references/method.md"
+    },
+    {
+      "id": "geez-known-deal-evaluator-land-development",
+      "family": "known_deal",
+      "category": "land_development",
+      "title": "Evaluate a known opportunity — Land Development",
+      "entrypoint": "skills/geez-known-deal-evaluator-land-development/SKILL.md",
+      "method": "skills/geez-known-deal-evaluator-land-development/references/method.md"
+    },
+    {
+      "id": "geez-post-acquisition-growth-planner",
+      "family": "value_creation",
+      "category": null,
+      "title": "Build a post-acquisition growth plan",
+      "entrypoint": "skills/geez-post-acquisition-growth-planner/SKILL.md",
+      "method": "skills/geez-post-acquisition-growth-planner/references/method.md"
+    },
+    {
+      "id": "geez-post-acquisition-growth-planner-pe-platform-addon",
+      "family": "value_creation",
+      "category": "pe_platform_addon",
+      "title": "Build a post-acquisition growth plan — Pe Platform Addon",
+      "entrypoint": "skills/geez-post-acquisition-growth-planner-pe-platform-addon/SKILL.md",
+      "method": "skills/geez-post-acquisition-growth-planner-pe-platform-addon/references/method.md"
+    },
+    {
+      "id": "geez-post-acquisition-growth-planner-search-fund",
+      "family": "value_creation",
+      "category": "search_fund",
+      "title": "Build a post-acquisition growth plan — Search Fund",
+      "entrypoint": "skills/geez-post-acquisition-growth-planner-search-fund/SKILL.md",
+      "method": "skills/geez-post-acquisition-growth-planner-search-fund/references/method.md"
+    },
+    {
+      "id": "geez-post-acquisition-growth-planner-small-business",
+      "family": "value_creation",
+      "category": "small_business",
+      "title": "Build a post-acquisition growth plan — Small Business",
+      "entrypoint": "skills/geez-post-acquisition-growth-planner-small-business/SKILL.md",
+      "method": "skills/geez-post-acquisition-growth-planner-small-business/references/method.md"
+    },
+    {
+      "id": "geez-post-acquisition-growth-planner-business-services",
+      "family": "value_creation",
+      "category": "business_services",
+      "title": "Build a post-acquisition growth plan — Business Services",
+      "entrypoint": "skills/geez-post-acquisition-growth-planner-business-services/SKILL.md",
+      "method": "skills/geez-post-acquisition-growth-planner-business-services/references/method.md"
+    },
+    {
+      "id": "geez-post-acquisition-growth-planner-saas",
+      "family": "value_creation",
+      "category": "saas",
+      "title": "Build a post-acquisition growth plan — Saas",
+      "entrypoint": "skills/geez-post-acquisition-growth-planner-saas/SKILL.md",
+      "method": "skills/geez-post-acquisition-growth-planner-saas/references/method.md"
+    },
+    {
+      "id": "geez-post-acquisition-growth-planner-healthcare",
+      "family": "value_creation",
+      "category": "healthcare",
+      "title": "Build a post-acquisition growth plan — Healthcare",
+      "entrypoint": "skills/geez-post-acquisition-growth-planner-healthcare/SKILL.md",
+      "method": "skills/geez-post-acquisition-growth-planner-healthcare/references/method.md"
+    },
+    {
+      "id": "geez-post-acquisition-growth-planner-general-cre",
+      "family": "value_creation",
+      "category": "general_cre",
+      "title": "Build a post-acquisition growth plan — General Cre",
+      "entrypoint": "skills/geez-post-acquisition-growth-planner-general-cre/SKILL.md",
+      "method": "skills/geez-post-acquisition-growth-planner-general-cre/references/method.md"
+    },
+    {
+      "id": "geez-post-acquisition-growth-planner-residential",
+      "family": "value_creation",
+      "category": "residential",
+      "title": "Build a post-acquisition growth plan — Residential",
+      "entrypoint": "skills/geez-post-acquisition-growth-planner-residential/SKILL.md",
+      "method": "skills/geez-post-acquisition-growth-planner-residential/references/method.md"
+    },
+    {
+      "id": "geez-post-acquisition-growth-planner-multifamily",
+      "family": "value_creation",
+      "category": "multifamily",
+      "title": "Build a post-acquisition growth plan — Multifamily",
+      "entrypoint": "skills/geez-post-acquisition-growth-planner-multifamily/SKILL.md",
+      "method": "skills/geez-post-acquisition-growth-planner-multifamily/references/method.md"
+    },
+    {
+      "id": "geez-post-acquisition-growth-planner-office",
+      "family": "value_creation",
+      "category": "office",
+      "title": "Build a post-acquisition growth plan — Office",
+      "entrypoint": "skills/geez-post-acquisition-growth-planner-office/SKILL.md",
+      "method": "skills/geez-post-acquisition-growth-planner-office/references/method.md"
+    },
+    {
+      "id": "geez-post-acquisition-growth-planner-retail",
+      "family": "value_creation",
+      "category": "retail",
+      "title": "Build a post-acquisition growth plan — Retail",
+      "entrypoint": "skills/geez-post-acquisition-growth-planner-retail/SKILL.md",
+      "method": "skills/geez-post-acquisition-growth-planner-retail/references/method.md"
+    },
+    {
+      "id": "geez-post-acquisition-growth-planner-industrial-logistics",
+      "family": "value_creation",
+      "category": "industrial_logistics",
+      "title": "Build a post-acquisition growth plan — Industrial Logistics",
+      "entrypoint": "skills/geez-post-acquisition-growth-planner-industrial-logistics/SKILL.md",
+      "method": "skills/geez-post-acquisition-growth-planner-industrial-logistics/references/method.md"
+    },
+    {
+      "id": "geez-post-acquisition-growth-planner-hospitality",
+      "family": "value_creation",
+      "category": "hospitality",
+      "title": "Build a post-acquisition growth plan — Hospitality",
+      "entrypoint": "skills/geez-post-acquisition-growth-planner-hospitality/SKILL.md",
+      "method": "skills/geez-post-acquisition-growth-planner-hospitality/references/method.md"
+    },
+    {
+      "id": "geez-post-acquisition-growth-planner-self-storage",
+      "family": "value_creation",
+      "category": "self_storage",
+      "title": "Build a post-acquisition growth plan — Self Storage",
+      "entrypoint": "skills/geez-post-acquisition-growth-planner-self-storage/SKILL.md",
+      "method": "skills/geez-post-acquisition-growth-planner-self-storage/references/method.md"
+    },
+    {
+      "id": "geez-post-acquisition-growth-planner-mixed-use",
+      "family": "value_creation",
+      "category": "mixed_use",
+      "title": "Build a post-acquisition growth plan — Mixed Use",
+      "entrypoint": "skills/geez-post-acquisition-growth-planner-mixed-use/SKILL.md",
+      "method": "skills/geez-post-acquisition-growth-planner-mixed-use/references/method.md"
+    },
+    {
+      "id": "geez-post-acquisition-growth-planner-land-development",
+      "family": "value_creation",
+      "category": "land_development",
+      "title": "Build a post-acquisition growth plan — Land Development",
+      "entrypoint": "skills/geez-post-acquisition-growth-planner-land-development/SKILL.md",
+      "method": "skills/geez-post-acquisition-growth-planner-land-development/references/method.md"
+    }
+  ],
+  "default_family": "thesis_builder",
+  "unknown_category": null,
+  "intent_before_category": true
+}

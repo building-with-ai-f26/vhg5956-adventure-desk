@@ -1,0 +1,16 @@
+const fields={principal:[0,1e12],annual_rate_pct:[0,100],rate_shock_points:[-100,100],annual_cash_before_interest:[-1e12,1e12],balloon_due:[0,1e12],refinancing_proceeds:[0,1e12],cash_reserve:[0,1e12],refinancing_costs:[0,1e12]};
+export function debtScenario(input={}){
+ if(!input||typeof input!=='object'||Array.isArray(input)||Object.keys(input).some(k=>!Object.hasOwn(fields,k)))throw Error('Use only the displayed debt-scenario assumptions.');
+ const values={};for(const [key,[min,max]] of Object.entries(fields)){let v=input[key];if(v===undefined||v===null||typeof v==='string'&&!v.trim()){values[key]=null;continue;}
+ if(typeof v==='string'){v=v.trim();if(!/^-?(?:\d+|\d{1,3}(?:,\d{3})+)(?:\.\d+)?$/.test(v))throw Error('Enter a plain number for '+key.replaceAll('_',' ')+'.');v=Number(v.replaceAll(',',''));}
+ if(typeof v!=='number'||!Number.isFinite(v)||v<min||v>max)throw Error('Check the range for '+key.replaceAll('_',' ')+'.');values[key]=v;}
+ if(values.annual_rate_pct!==null&&values.rate_shock_points!==null&&(values.annual_rate_pct+values.rate_shock_points<0||values.annual_rate_pct+values.rate_shock_points>100))throw Error('The resulting annual interest rate must be between0and100percent.');
+ const result=(id,label,need,formula,fn)=>({id,label,formula,status:need.every(k=>values[k]!==null)?'calculated_from_unverified_assumptions':'unknown',value:need.every(k=>values[k]!==null)?fn():null,missing:need.filter(k=>values[k]===null)});
+ const p=values.principal,r=values.annual_rate_pct,s=values.rate_shock_points;
+ return {kind:'debt_scenario',model_calls:0,inputs:values,unit_basis:'Use the same currency units throughout. Rates are annual percent; shock is percentage points. No exchange rates applied.',results:[
+ result('base_interest','Annual interest at starting rate',['principal','annual_rate_pct'],'principal × starting annual rate /100',()=>p*r/100),
+ result('stressed_interest','Annual interest after rate shock',['principal','annual_rate_pct','rate_shock_points'],'principal × (starting annual rate + rate shock points) /100',()=>p*(r+s)/100),
+ result('incremental_interest','Change in annual interest',['principal','rate_shock_points'],'principal × rate shock points /100',()=>p*s/100),
+ result('cash_after_interest','Annual cash after stressed interest only',['principal','annual_rate_pct','rate_shock_points','annual_cash_before_interest'],'annual cash before interest − stressed annual interest',()=>values.annual_cash_before_interest-p*(r+s)/100),
+ result('balloon_gap','Funding gap at balloon/refinancing',['balloon_due','refinancing_proceeds','cash_reserve','refinancing_costs'],'max(0, balloon due + refinancing costs − refinancing proceeds − cash reserve)',()=>Math.max(0,values.balloon_due+values.refinancing_costs-values.refinancing_proceeds-values.cash_reserve))],notice:'Scenario arithmetic only, from your unverified assumptions. Interest assumes constant outstanding principal for a full year: it excludes amortization, intra-year timing, hedges, taxes and other costs. Cash after interest is not total debt service, DSCR, an investment return or a financing commitment. Balloon inputs must describe the same refinancing event; reserves must be available for it. No missing amount is assumed to be zero.'};
+}

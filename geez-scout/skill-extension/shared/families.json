@@ -1,0 +1,134 @@
+{
+  "thesis_builder": {
+    "purpose": "Collaboratively formulate a falsifiable investment thesis before requiring a specific deal.",
+    "execution_steps": [
+      "Capture original request verbatim and distinguish user preferences from AI suggestions.",
+      "Select category and investment strategy; identify optional constraints without inventing missing values.",
+      "Interview user about advantage, capital, operating capabilities, risk, geography, and desired ownership experience.",
+      "Define target customer or tenant, value proposition, market structure, and sources of economic return.",
+      "Develop competing hypotheses and explicit exclusion criteria.",
+      "Map industry-specific drivers, underwriting assumptions, financing dependencies, and exit pathways.",
+      "Define evidence needed to support or falsify each hypothesis.",
+      "Run base, downside, and alternative strategy scenarios using labeled assumptions.",
+      "Use sealed cross-model review to challenge causal claims and hidden dependencies.",
+      "Version the thesis and translate it into sourcing criteria and a deal-fit rubric."
+    ],
+    "output_sections": [
+      "original_request",
+      "thesis_statement",
+      "investor_constraints_and_unknowns",
+      "market_and_category_logic",
+      "competitive_or_operating_advantage",
+      "target_profile",
+      "exclusions",
+      "return_drivers",
+      "assumptions_and_scenarios",
+      "falsifiers",
+      "sourcing_filters",
+      "evidence_register",
+      "review_disagreements",
+      "revision_history"
+    ],
+    "refusal_unknown_gates": [
+      "Do not assert an investable thesis when critical causal assumptions are unsupported; label it a hypothesis.",
+      "Do not imply financing availability, market demand, or regulatory permission without evidence.",
+      "Do not convert unspecified return targets or risk tolerance into defaults.",
+      "Do not recommend unlawful discrimination or prohibited targeting.",
+      "Pause any regulated implementation claim pending qualified jurisdiction-specific review."
+    ],
+    "data_room_handoff": {
+      "seller_materials": "Generate a future seller request taxonomy, not an existing room.",
+      "buyer_diligence": "Create thesis evidence pack, source register, model assumptions, falsifiers, and diligence priorities.",
+      "post_close": "Create a hypothetical KPI and operating-capability blueprint, clearly marked pre-acquisition."
+    }
+  },
+  "known_deal": {
+    "purpose": "Evaluate an identified opportunity independently of whether it matches the user's thesis.",
+    "execution_steps": [
+      "Capture the exact opportunity description and distinguish verified identity from seller claims.",
+      "Determine asset/entity perimeter, transaction structure, ownership interests, and available materials.",
+      "Inventory evidence by source, date, period, and known/unknown/conflicting state.",
+      "Apply category-specific financial and operational normalization.",
+      "Build price, cash flow, capital needs, financing, downside, and exit scenarios when inputs permit.",
+      "Score thesis fit separately from intrinsic deal quality and execution feasibility.",
+      "Test category-specific diligence hypotheses and quantify material sensitivities where supportable.",
+      "Record red flags, unresolved conflicts, required third-party specialists, and requests.",
+      "Obtain sealed independent model checkpoints and reciprocal cross-grades.",
+      "Issue a conditional decision, evidence sufficiency rating, diligence plan, and room index."
+    ],
+    "output_sections": [
+      "opportunity_identity",
+      "transaction_perimeter",
+      "original_user_wording",
+      "seller_claims",
+      "verified_facts",
+      "unknowns_and_conflicts",
+      "normalized_economics",
+      "valuation_scenarios",
+      "thesis_fit",
+      "deal_quality",
+      "risks",
+      "execution_feasibility",
+      "diligence_tests",
+      "cross_model_review",
+      "decision_and_conditions",
+      "document_requests"
+    ],
+    "refusal_unknown_gates": [
+      "Do not invent purchase price, EBITDA, NOI, ARR, cap rate, occupancy, financing, or legal status.",
+      "If essential cash flow or transaction perimeter is unknown, withhold definitive valuation and investment grade.",
+      "Do not label missing documentation fraud or failure.",
+      "Do not equate high thesis fit with a good deal or low thesis fit with poor intrinsic quality.",
+      "Do not represent preliminary analysis as legal, tax, environmental, engineering, or medical diligence."
+    ],
+    "data_room_handoff": {
+      "seller_materials": "Index originals and requests, preserving seller provenance and versions.",
+      "buyer_diligence": "Maintain reconciliation workbooks, diligence findings, risk log, approvals, and external specialist reports.",
+      "post_close": "Prepare a conditional transition checklist only; do not transfer confidential materials without authorization."
+    }
+  },
+  "value_creation": {
+    "purpose": "Build an evidence-based post-acquisition operating and growth plan, including an explicit pre-close hypothetical mode.",
+    "execution_steps": [
+      "Confirm whether acquisition is planned, signed, or closed and what operating authority exists.",
+      "Establish verified opening baseline and identify unavailable metrics.",
+      "Map value drivers to controllable initiatives, dependencies, costs, owners, and time to impact.",
+      "Separate revenue growth, margin improvement, working capital, capital expenditure, risk reduction, and multiple assumptions.",
+      "Create transition, 30/60/90-day, first-year, and multi-year workstreams without assuming all are immediately executable.",
+      "Estimate implementation resources, cash costs, disruption, and downside scenarios using labeled inputs.",
+      "Define KPI owners, measurement definitions, cadence, control limits, and intervention triggers.",
+      "Sequence initiatives around critical dependencies and operational capacity.",
+      "Cross-grade sealed plans for feasibility, evidence, downside, and double counting.",
+      "Prepare governance pack, operating dashboard, and authorized post-close data-room handoff."
+    ],
+    "output_sections": [
+      "ownership_and_authority_state",
+      "baseline",
+      "value_driver_tree",
+      "initiative_portfolio",
+      "financial_bridge",
+      "costs_and_capacity",
+      "dependencies",
+      "30_60_90_day_plan",
+      "year_one_plan",
+      "multi_year_plan",
+      "kpi_dictionary",
+      "downside_triggers",
+      "governance",
+      "cross_model_review",
+      "data_room_transition"
+    ],
+    "refusal_unknown_gates": [
+      "Do not assert a realized synergy, savings, or growth outcome before measurement.",
+      "Do not authorize layoffs, patient-care changes, tenant actions, or regulated activities through an AI plan.",
+      "Do not double count revenue, margin, working capital, or valuation improvements.",
+      "Do not assume post-close access, personnel control, financing, or VDR provisioning.",
+      "If the baseline is unreliable, produce a measurement and stabilization plan before a quantified value claim."
+    ],
+    "data_room_handoff": {
+      "seller_materials": "Preserve permitted source documents and chain of custody.",
+      "buyer_diligence": "Transfer approved findings, unresolved risks, assumptions, and integration commitments.",
+      "post_close": "Define controlled folders for governance, finance, operations, personnel, customers or tenants, assets, compliance, projects, KPI history, and incident logs."
+    }
+  }
+}

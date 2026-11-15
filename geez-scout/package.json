@@ -1,0 +1,14 @@
+{
+  "name": "adventure-desk-geez-scout",
+  "version": "0.3.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "scripts": {
+    "start": "node demo/start-scouting.mjs",
+    "models:register": "node scripts/register-local-models.mjs",
+    "test": "node --test tests/product-analytics.test.mjs tests/local-feedback-cycle.test.mjs tests/public-company-sources.test.mjs tests/thesis-conversation-context.test.mjs"
+  }
+}

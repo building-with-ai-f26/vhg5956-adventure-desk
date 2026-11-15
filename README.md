@@ -7,6 +7,10 @@ Turn an outreach or research list into a clear next-action queue.
 - App: runs locally. No hosted app or external messaging is required for Build 1.
 - Source template: https://github.com/building-with-ai-f26/project-template
 
+## New: local scouting and PostHog
+
+The new investment-scouting module is in [geez-scout](geez-scout/README.md). It adds editable thesis development, real public-source company discovery, local DeepSeek/Gemma feedback and anonymous PostHog funnel events. This is a functional weekly prototype with uneven result quality; see its evidence and limits. The original Python prototype below is preserved.
+
 ## Run the prototype
 Python 3.12 or later, standard library only. No package installation required for the deterministic workflow.
 

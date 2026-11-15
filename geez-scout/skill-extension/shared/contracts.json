@@ -1,0 +1,84 @@
+{
+  "input_policy": "All investor-facing fields optional. Keep exact original wording immutable. Ask at most one useful optional question at a time; an interview is not a mandatory questionnaire. Unknown constraints remain unknown. Proposals require user acceptance before changing the working thesis.",
+  "evidence_states": [
+    "sourced_fact",
+    "user_claim",
+    "analyst_inference",
+    "hypothesis",
+    "unknown",
+    "conflicting",
+    "refuted"
+  ],
+  "decision_policy": "Thesis fit, intrinsic quality and price/economics are separate. No invented score or numeric threshold. A source ID or quote occurrence is not entailment. Nonmention cannot refute a real-world condition. A safe generic answer fails usefulness.",
+  "source_policy": "No live lookup, seller mandate, financing availability or current legal clearance without an actual scoped receipt. Verify material legal/accounting/environmental requirements with current primary sources and qualified specialists.",
+  "data_rooms": {
+    "seller_materials": {
+      "purpose": "Catalog materials provided by the seller or intermediary.",
+      "states": [
+        "requested",
+        "received",
+        "partial",
+        "superseded",
+        "withheld",
+        "not_applicable"
+      ],
+      "control": "Preserve originals, provenance, confidentiality, access rights, and seller representations."
+    },
+    "buyer_diligence": {
+      "purpose": "Maintain buyer analyses, requests, independent checks, unresolved issues, decisions, and approvals.",
+      "states": [
+        "planned",
+        "in_progress",
+        "verified",
+        "disputed",
+        "blocked",
+        "closed"
+      ],
+      "control": "Separate buyer work product from seller originals; restrict privileged and sensitive information."
+    },
+    "post_close": {
+      "purpose": "Maintain authorized operating baselines, transition records, ownership, plans, controls, and KPI history.",
+      "states": [
+        "planned",
+        "handoff_pending",
+        "accepted",
+        "operational",
+        "exception",
+        "archived"
+      ],
+      "control": "Create only after appropriate authorization; do not assume ownership or system access."
+    },
+    "common_index_fields": [
+      "room",
+      "folder",
+      "document_id",
+      "filename",
+      "owner",
+      "request_date",
+      "received_date",
+      "period",
+      "version",
+      "source",
+      "access_class",
+      "status",
+      "verification",
+      "open_issue",
+      "next_action"
+    ]
+  },
+  "model_policy": {
+    "version": "three-intent-integration-1",
+    "models": [
+      "deepseek-r1:8b",
+      "gemma4:12b"
+    ],
+    "thinking": true,
+    "execution": "sequential",
+    "smaller_fallback": false,
+    "same_checkpoint_fallback": false,
+    "first_passes": "Seal both independently before exchange",
+    "grading": "Only the opposite non-contributor checkpoint may grade; self-checks are debugging only",
+    "verification": "Peer opinion is unverified; source access, semantic competence and runtime qualification need actual evidence",
+    "base_library_sha256": "b131bfd991316da2c5f7094a65119c1b554e5216c5827a6145a0ba39cf3d7476"
+  }
+}

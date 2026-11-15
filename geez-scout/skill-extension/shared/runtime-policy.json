@@ -1,0 +1,15 @@
+{
+  "version": "three-intent-integration-1",
+  "models": [
+    "deepseek-r1:8b",
+    "gemma4:12b"
+  ],
+  "thinking": true,
+  "execution": "sequential",
+  "smaller_fallback": false,
+  "same_checkpoint_fallback": false,
+  "first_passes": "Seal both independently before exchange",
+  "grading": "Only the opposite non-contributor checkpoint may grade; self-checks are debugging only",
+  "verification": "Peer opinion is unverified; source access, semantic competence and runtime qualification need actual evidence",
+  "base_library_sha256": "b131bfd991316da2c5f7094a65119c1b554e5216c5827a6145a0ba39cf3d7476"
+}

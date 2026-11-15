@@ -1,0 +1,2 @@
+export const GENERATION_PROFILE=Object.freeze({version:'quality-first-full-report-v1',research_output_tokens:8192,thesis_output_tokens:4096,minimum_context:6144,maximum_context:32768,context_margin:256});
+export function chooseContext(promptTokens,outputReserve,fixed){const needed=promptTokens+outputReserve;if(fixed!==undefined)return fixed;return [6144,8192,12288,16384,24576,32768].find(n=>n>=needed+GENERATION_PROFILE.context_margin)||32768;}
