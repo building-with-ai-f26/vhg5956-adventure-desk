@@ -24,7 +24,7 @@ Copy `.env.example` to `.env` and enter your **PostHog project token** and US/EU
 
 The app uses PostHog's official Capture API through a same-origin server endpoint. Explicit events cover `desk_opened`, `thesis_started`, `thesis_completed`, `thesis_accepted`, `research_started`, `research_completed`, `research_failed`, `results_viewed`, and `source_opened`. Suggested research funnel: desk opened → research started → research completed → results viewed → source opened. Filter `onboarding=true` out of completed-run quality analysis; blank requests are not generated research. `qa_run=true` identifies explicit HTTP verification events. Local manual testing is not evidence of customer adoption.
 
-Only an anonymous analytics UUID, fixed app/build labels, result/model-call counts and onboarding/QA flags are sent. No thesis, notes, credentials, company names, research excerpts, source URLs, free-text errors, DOM content or session recordings are captured. IP geolocation/person-profile processing are disabled. Analytics failure does not replace or block research. With no project token, analytics is disabled. Verified delivery occurred on the capped free plan; no payment method or paid plan was added.
+Only an anonymous analytics UUID, fixed app/build labels, result/model-call counts and onboarding/QA flags are sent. No thesis, notes, credentials, company names, research excerpts, source URLs, free-text errors, unmasked private DOM content is captured. Replay is off by default; the visitor may explicitly allow masked recording with private result/chat/history/proposal regions blocked. IP geolocation/person-profile processing are disabled. Analytics failure does not replace or block research. With no project token, analytics is disabled. Verified delivery occurred on the capped free plan; no payment method or paid plan was added.
 
 ## Evidence and current limits
 
@@ -39,3 +39,6 @@ Coverage is a bounded public search and one broker office, mainly Upper Midwest 
 Risk narratives, outreach, financial underwriting, automatic lesson promotion, the bulk experimental skill library, AirLLM full-answer execution and FlashAttention acceleration are outside this active baseline. Older support modules are retained as development source, not advertised as qualified features. Only `demo/start-scouting.mjs` is the product entry point.
 
 Runtime databases, weights, private installation receipts, model/source logs and local `.env` are excluded. The registration command creates fresh local model metadata without publishing an existing private receipt.
+
+## Build 2 verification update
+The local desk now also emits an anonymous pageview and offers explicit optional masked replay; private dynamic regions are blocked and recording stops on sign-out. The public Product Page has separately verified pageviews, demo clicks and replay. Current focused test count is 22. Estimated marginal operating cost is $0.01/run (builder estimate, not measured), with $0 local model/API fees and hardware/subscriptions excluded. See the Product Page PRD v2 and build log for risks and real-action evidence.

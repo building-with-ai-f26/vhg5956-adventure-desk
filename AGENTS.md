@@ -3,7 +3,7 @@
 > Give this file to your coding agent and check that it is using these instructions. Keep the stack, commands, and ground rules current.
 
 ## 1. Project Overview
-- **What this repo builds:** [1–2 sentence summary]
+- **What this repo builds:** Adventure Desk helps an acquisition researcher develop a thesis, run local-model scouting and inspect source-backed leads. The original next-action prototype remains available.
 - **Primary user & core workflow:** See the living PRD in `docs/index.html`.
 - **Tech stack:** Python 3.12 standard library for the original prototype; Node.js 24 standard library and SQLite for geez-scout; local Ollama for scout inference; PostHog Capture API for anonymous product events.
 
@@ -26,3 +26,13 @@
 - Verify: `cd geez-scout` then `npm test`. HTTP and actual-model checks have separately documented scopes.
 - Product rule: never infer revenue/MRR from headcount, pricing, locations or industry. Preserve unknown sale status. Never send user text, credentials or research content in analytics.
 - Publish source only. Exclude `.env`, state databases, raw logs, model weights and private installation receipts. A final DeepSeek revision is not an independently approved result.
+
+## Project structure
+- `docs/`: public Product Page, PRD v2, build log, public-page analytics and evidence screenshots.
+- `geez-scout/demo/`: browser UI and loopback-only Node server.
+- `geez-scout/research/`: source admission, local model pins, thesis/scout workflow, VQA guidance and analytics/replay boundaries.
+- `geez-scout/lib/geez/` and `geez-scout/drizzle/`: session/auth helpers and SQLite schema.
+- `geez-scout/scripts/`: verify/register existing pinned local models; no automatic download.
+- `geez-scout/tests/`: focused deterministic regression checks.
+- `prototype/`: preserved earlier Python next-action app.
+- PostHog browser project tokens are intentionally public; private personal API keys and local environment files must never be committed. Replay is opt-in, inputs are masked and private dynamic regions are blocked.

@@ -23,6 +23,7 @@ import {simpleScout as baselineScout} from '../research/simple-scout.mjs';
 import {simpleThesis as baselineThesis} from '../research/simple-thesis.mjs';
 import {LOCAL_VQA_SKILLS} from '../research/local-feedback-cycle.mjs';
 import {captureProductEvent} from '../research/product-analytics.mjs';
+import {maskedReplayScript} from '../research/local-replay.mjs';
 try{process.loadEnvFile(new URL('../.env',import.meta.url));}catch(error){if(error.code!=='ENOENT')throw error;}
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const stateName=process.env.GEEZ_DEMO_STATE_DIR||'.demo-state';
@@ -110,9 +111,11 @@ const server=http.createServer(async(req,res)=>{
      const row=db.prepare('SELECT * FROM demo_research WHERE id=? AND session_id=?').get(url.pathname.split('/').at(-1),me.session.id);response=row?json({job:view(row)}):json({error:'This review is not in your session.'},404);
     }else response=json({error:'Not found.'},404);
    }else response=await handleApi(request,env);
+  }else if(url.pathname==='/masked-replay.js'&&req.method==='GET'){
+   response=new Response(maskedReplayScript(process.env.POSTHOG_PROJECT_TOKEN,process.env.POSTHOG_HOST),{headers:{'content-type':'text/javascript; charset=utf-8','cache-control':'no-store'}});
   }else{
    const files={'/':'index.html','/app.js':baselineMode?'thesis-app.js':scoutMode?'scout-app.js':'app.js','/analytics.js':'analytics.js','/thesis-state.js':'thesis-state.js','/style.css':'style.css'};const name=files[url.pathname];
-   response=name?new Response(readFileSync(resolve(root,'demo',name)),{headers:{'content-type':name.endsWith('.html')?'text/html; charset=utf-8':name.endsWith('.js')?'text/javascript; charset=utf-8':'text/css; charset=utf-8','content-security-policy':"default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; base-uri 'none'; frame-ancestors 'none'",'x-content-type-options':'nosniff'}}):new Response('Not found',{status:404});
+   response=name?new Response(readFileSync(resolve(root,'demo',name)),{headers:{'content-type':name.endsWith('.html')?'text/html; charset=utf-8':name.endsWith('.js')?'text/javascript; charset=utf-8':'text/css; charset=utf-8','content-security-policy':"default-src 'self'; script-src 'self' https://us-assets.i.posthog.com https://eu-assets.i.posthog.com; style-src 'self'; img-src 'self' data:; connect-src 'self' https://us.i.posthog.com https://eu.i.posthog.com; worker-src 'self' blob:; base-uri 'none'; frame-ancestors 'none'",'x-content-type-options':'nosniff'}}):new Response('Not found',{status:404});
   }
   const headers=Object.fromEntries(response.headers);const cookies=response.headers.getSetCookie().map(v=>cookieNamespace?v.replace(/^(geez_gate|geez_session)=/,cookieNamespace+'$1='):v);if(cookies.length)headers['set-cookie']=cookies;res.writeHead(response.status,headers);res.end(Buffer.from(await response.arrayBuffer()));
  }catch{res.writeHead(400,{'content-type':'application/json'});res.end(JSON.stringify({error:'That request could not be read. Your saved work has not changed.'}));}
