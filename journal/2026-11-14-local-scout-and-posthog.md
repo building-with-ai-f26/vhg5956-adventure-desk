@@ -9,3 +9,6 @@ PostHog now receives explicit, anonymous product events through its official Cap
 Verification: 20 focused automated checks, 16 actual HTTP checks on the release copy, current Chrome sign-in/optional/blank/saved-reload checks, and 59 mechanical assertions on the actual scouting receipt. These counts cover different scopes, not a combined accuracy score. No full ten-runs-per-feature, general model-quality or complete-assignment claim is made.
 
 No new software/API purchase was made during this release step. Existing subscriptions, hardware and electricity are not reconciled into a total cost. Substantial development and QA took place across several days between uploads; total hours were not measured. No outreach was sent. GitHub publication does not submit the milestone in Icerynk.
+
+## November 15 correction: public Product Page
+The earlier update integrated the localhost app but omitted the separate public-page snippet. Added the official browser bootstrap in docs/index.html using only the public project token, pageview/demo-button events, site_surface separation and an upfront optional-recording notice. Local app inputs are not recorded. Published-page event/replay verification and screenshot are being checked separately; no claim that the earlier app screenshot proved public-page instrumentation.
