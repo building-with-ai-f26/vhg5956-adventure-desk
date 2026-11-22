@@ -42,3 +42,15 @@ Runtime databases, weights, private installation receipts, model/source logs and
 
 ## Build 2 verification update
 The local desk now also emits an anonymous pageview and offers explicit optional masked replay; private dynamic regions are blocked and recording stops on sign-out. The public Product Page has separately verified pageviews, demo clicks and replay. Current focused test count is 22. Estimated marginal operating cost is $0.01/run (builder estimate, not measured), with $0 local model/API fees and hardware/subscriptions excluded. See the Product Page PRD v2 and build log for risks and real-action evidence.
+
+## Public worker on Vic-PC
+
+The existing Geez Site queues the newest thesis and research requests. The worker makes only outbound HTTPS requests to Geez and runs jobs through the local app at `127.0.0.1:8792`. Launch the Ollama service and the local app first. Use the same Windows identity that created the DPAPI-protected worker token to run the PowerShell launcher.
+
+```powershell
+node demo/start-scouting.mjs
+# In a separate process
+./scripts/start-public-worker.ps1 -CredentialPath <private-dpapi-file> -LoopbackEnvFile <private-env-file>
+```
+
+The launcher passes the token through stdin. The public desk's connection status reflects the worker heartbeat. Leave both processes running and keep Vic-PC awake for live tests. The local demonstration password is separate from the hosted group gate.
