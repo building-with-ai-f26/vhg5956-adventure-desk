@@ -4,7 +4,7 @@
 
 **Lane: Beginner.** Geez is a local-model AI app. A shared group password opens the desk, then a separate, opaque session credential scopes each visitor's jobs. The app does not issue individual accounts. The current desk uses Supabase Postgres on the free plan for jobs, worker state, visitor tickets, write limits and gateway configuration. RLS is enabled and forced on all five application tables. The group password verifier remains server-side configuration. The older desk and its historical session/data store use Cloudflare D1 with application-level checks. An already valid historical login can be read to restore the same session to the current desk. Legacy D1 has no native RLS.
 
-The final live release is Site version 21 from source commit c99efd6f7e567e40d510a7fdb8fa93790944b5f1. The browser calls only the Site for application operations. The database gateway requires a separate server-side proof. Supabase's publishable key alone cannot read or change private job rows. Vic-PC claims jobs over authenticated outbound HTTPS. The local Node server and Ollama both listen on loopback. Hosted inputs and results transit the Site and the queue, and only inference stays on Vic-PC. There is no cloud model fallback.
+The November 23 live release is Site version 22 from source commit 0011b09dcc97272b6dacc4d0016f2d349daf4c3f. It adds an elapsed-time cue to the waiting view. The browser calls only the Site for application operations. The database gateway requires a separate server-side proof. Supabase's publishable key alone cannot read or change private job rows. Vic-PC claims jobs over authenticated outbound HTTPS. The local Node server and Ollama both listen on loopback. Hosted inputs and results transit the Site and the queue, and only inference stays on Vic-PC. There is no cloud model fallback.
 
 ## Tests on November 22, 2026
 
@@ -32,6 +32,10 @@ The final live release is Site version 21 from source commit c99efd6f7e567e40d51
 
 Vic reports that a classmate used Geez during Tuesday’s class and pointed out bugs. This build addresses the public worker connection and workflow problems found during that testing. The earlier test’s device and completion of the full workflow have not been confirmed.
 
+## November 23 live testing
+
+November 23 morning check: Duncan emailed at 9:40 AM Eastern that he was running a thesis. An anonymous research run began at 9:39:51 and reached the pinned local models. The timing is consistent with his test. He has not yet reported a result, device, or completed phone workflow.
+
 ## Open verification
 
-A classmate still needs to complete the core workflow on a phone. Disclose the separate legacy D1 area and shared group gate, and record work on a second actual day. Icerynk has a draft with the required link, note and live isolation image, and shows that it has not been submitted.
+A classmate still needs to complete the core workflow on a phone. Disclose the separate legacy D1 area and shared group gate, and preserve the actual November 22 and November 23 commit evidence. Icerynk has a draft with the required link, note and live isolation image, and shows that it has not been submitted.
