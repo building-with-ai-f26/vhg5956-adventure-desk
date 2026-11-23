@@ -28,6 +28,10 @@ The final live release is Site version 21 from source commit c99efd6f7e567e40d51
 - The hosting runtime rejected the initial redirect setting for outbound requests. The fix uses manual redirect handling and rejects non-success responses, so credentials are never sent to redirected destinations.
 - New production requests are limited per visitor and per session. Supabase checks service-only access and hashes opaque visitor tickets. An expired or revoked ticket does not get access to its session. Queue capacity is bounded and a worker can lease only one model job at a time. No paid AI provider or file-bucket integration is configured. The estimated marginal operating cost is $0.01 per run, with $0 in model API fees and no metered electricity estimate.
 
+## Class feedback
+
+Vic reports that a classmate used Geez during Tuesday’s class and pointed out bugs. This build addresses the public worker connection and workflow problems found during that testing. The earlier test’s device and completion of the full workflow have not been confirmed.
+
 ## Open verification
 
 A classmate still needs to complete the core workflow on a phone. Disclose the separate legacy D1 area and shared group gate, and record work on a second actual day. Icerynk has a draft with the required link, note and live isolation image, and shows that it has not been submitted.
