@@ -18,7 +18,7 @@
 2. **Small batches:** Make small, focused changes that can be reviewed and explained by a human in a single Pull Request.
 3. **Explainability:** Avoid unnecessary abstractions or dependencies. Help the human builder understand the main components, what changed, why it matters, what could break, and how it was checked.
 4. **Verify changes:** Run relevant checks. For a reproducible logic bug, use a failing test to demonstrate the fix when practical. Record manual checks and known limitations; follow the selected Build 3 verification lane.
-5. **Zero secrets in code:** Never hardcode API keys, tokens, or credentials. Always read from environment variables (`.env`) and update `.env.example` when new variables are needed.
+5. **Zero secrets in code:** Read secrets from private configuration. A PowerShell alias collision once printed a worker credential before a check ran. Use specific diagnostic function names, handle exceptions without credential details, and rotate any credential that appears in output.
 6. **Stop when looping:** If a fix fails twice in a row, stop, summarize what failed, and ask the human before trying a third approach.
 
 ## Geez scouting module
@@ -41,7 +41,7 @@
 ## Shipping
 
 1. Verify both pinned Ollama tags and local registrations from `geez-scout`. Run `npm test` and start the loopback app with `node demo/start-scouting.mjs`. Check `/api/health` for `scouting_pivot_v1`.
-2. Open the existing Geez Group Site source through the Sites workflow. Preserve its project ID, public audience, and existing group password. Use the source-only browser files, the scoped outbound worker protocol, and the checked-in Supabase migration. For a fresh database, replace the verifier marker through private deployment configuration before applying the migration. Back up the target database before production schema changes and verify RLS on all application tables after migration.
+2. Open the existing Geez Group Site source through the Sites workflow. Preserve its project ID, public audience, and existing group password. Use the source-only browser files, the scoped outbound worker protocol, and the checked-in Supabase migrations. For a fresh database, replace the verifier marker through private deployment configuration before applying the migration. Back up the target database before production schema changes and verify RLS on all application tables after migration.
 3. Set Site runtime configuration for the Supabase project origin and publishable key, the server-side worker verifier, and PostHog. Keep raw worker credentials in encrypted local storage. Launch the Node worker on Vic-PC, sending its credential through standard input. Never expose either loopback port or put a secret in Git, browser code, screenshots, or command arguments.
 4. Run the Site's deterministic tests and dependency audit. Build, package, push and deploy the exact source revision through Sites. Verify the public URL, worker heartbeat, one real public thesis run, isolation from a second session, and PostHog capture and opt-in replay. Record the classmate's phone test separately. A reachable host and a healthy Ollama process are separate checks. A run counts only when the public request reaches the PC and the result returns to the same visitor.
 5. Submit from Icerynk only after checking the public URL and the evidence. Include the class repo, Beginner lane, SECURITY.md and an applicable security test image. Verify the submission receipt.
